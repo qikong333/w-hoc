@@ -1,0 +1,13 @@
+**/*.md
+**/*.svg
+ **/template/*
+coverage/
+publish/
+dist/
+output/
+/site/
+
+package-lock.json
+yarn.lock
+
+ 
