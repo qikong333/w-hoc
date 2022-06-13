@@ -9,10 +9,12 @@ import {
     watchEffect,
     watch,
 } from 'vue'
-import RwForm from '../../components/forms/RwForm/index'
+import YwForm from '../../components/forms/YwForm/index'
 import { formItems, powerFormItems } from './config'
-import { FormOutput } from '../../components/forms/RwForm/types/formOutput'
+import { FormOutput } from '../../components/forms/YwForm/types/formOutput'
 interface props {}
+
+// 路由生成工具
 
 const routerTool = defineComponent({
     setup(props: props, { emit, expose }): () => JSX.Element {
@@ -100,11 +102,11 @@ const routerTool = defineComponent({
                             <Button>添加子级</Button>
                         </div>
                         <div>
-                            <RwForm formItems={formItems} ref={formRef} />
+                            <YwForm formItems={formItems} ref={formRef} />
                             power:
                             <Button onClick={power.addPower}>添加权限</Button>
                             {power.data.map((item, index) => (
-                                <RwForm
+                                <YwForm
                                     ref={'power' + index}
                                     formItems={powerFormItems}
                                     formData={item}

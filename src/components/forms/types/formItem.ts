@@ -1,5 +1,5 @@
-import { TableInputMode } from '../RwTableInput/types/TableInput'
-import { InputType } from '../RwForm/types/inputType'
+import { TableInputMode } from '../YwTableInput/types/TableInput'
+import { InputType } from '../YwForm/types/inputType'
 
 export type ModeType = 'view' | 'edit' | 'add' | 'table' | 'search' | 'excel'
 /*** 下拉模式（multiple-多选、tags-标签）*/
@@ -118,7 +118,7 @@ export interface FormItem {
     /**
      *   // 默认隐藏表头
      */
-    headerHide?: boolean 
+    headerHide?: boolean
     /**
      *   // 启用排序
      */

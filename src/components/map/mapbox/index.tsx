@@ -10,7 +10,7 @@ interface Porp {
     // points: []
 }
 
-const RwMapBox = defineComponent({
+const YwMapBox = defineComponent({
     props: {
         points: {
             type: Array,
@@ -41,4 +41,4 @@ const RwMapBox = defineComponent({
     },
 })
 
-export default RwMapBox
+export default YwMapBox

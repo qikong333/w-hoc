@@ -1,11 +1,11 @@
-import RwMapBox from '@/components/map/mapbox'
+import YwMapBox from '@/components/map/mapbox'
 import { defineComponent, reactive, ref } from 'vue'
 
 import './index.scss'
 import { Input } from 'ant-design-vue'
 
 export default defineComponent({
-    components: { RwMapBox },
+    components: { YwMapBox },
     setup(props) {
         const Ctl = reactive({
             v1: 113.752002,
@@ -16,7 +16,7 @@ export default defineComponent({
             <>
                 <Input type="text" v-model:value={Ctl.v1} />
                 <Input type="text" v-model:value={Ctl.v2} />
-                <RwMapBox points={[Ctl.v1, Ctl.v2]} />
+                <YwMapBox points={[Ctl.v1, Ctl.v2]} />
             </>
         )
     },

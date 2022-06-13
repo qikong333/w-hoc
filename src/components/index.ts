@@ -1,1 +1,3 @@
-export * as demo from './demo'
+import YwForm from '@/components/forms/YwForm'
+
+export { YwForm }

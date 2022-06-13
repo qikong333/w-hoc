@@ -12,7 +12,7 @@ import { MpaInput } from './types/input'
 import { MapParms } from './types/mapParams'
 import driving from './utils/funcs/driving'
 
-const RwAmap = defineComponent({
+const YwAmap = defineComponent({
     props: ['mapStyle', 'pathNavigator', 'driving'],
 
     setup(props: MpaInput, { emit, expose }): () => JSX.Element {
@@ -79,4 +79,4 @@ const RwAmap = defineComponent({
     },
 })
 
-export default RwAmap
+export default YwAmap

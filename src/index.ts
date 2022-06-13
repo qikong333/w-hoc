@@ -1,3 +1,3 @@
-import RwTablePage from './hoc/tablePage/RwTablePage'
+import YwTablePage from './hoc/tablePage/YwTablePage'
 
-export { RwTablePage }
+export { YwTablePage }

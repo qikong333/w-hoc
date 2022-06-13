@@ -2,7 +2,7 @@ import { defineComponent, reactive, ref } from 'vue'
 
 import './index.scss'
 import { Button } from 'ant-design-vue'
-import RwAmap from '@/components/map/amap'
+import YwAmap from '@/components/map/amap'
 import { MapOutput } from '@/components/map/amap/types/output'
 
 export default defineComponent({
@@ -35,13 +35,13 @@ export default defineComponent({
                 Ctl.value = v
             },
             handleStart: () => {
-                RwAmapRef.value?.pathNavigator?.start(5000)
+                YwAmapRef.value?.pathNavigator?.start(5000)
             },
             handlePause: () => {
-                RwAmapRef.value?.pathNavigator?.pause()
+                YwAmapRef.value?.pathNavigator?.pause()
             },
             handleResume: () => {
-                RwAmapRef.value?.pathNavigator?.resume()
+                YwAmapRef.value?.pathNavigator?.resume()
             },
 
             handleData: () => {
@@ -57,7 +57,7 @@ export default defineComponent({
                 ]
             },
         })
-        const RwAmapRef = ref<MapOutput>()
+        const YwAmapRef = ref<MapOutput>()
         const drivingParams = {
             startLngLat: [116.369962, 39.880255],
             endLngLat: [116.341123, 39.985033],
@@ -91,8 +91,8 @@ export default defineComponent({
             <>
                 <div class="wapper">
                     <div>
-                        <RwAmap
-                            ref={RwAmapRef}
+                        <YwAmap
+                            ref={YwAmapRef}
                             // driving={drivingParams}
                             pathNavigator={pathNavigaParams}
                         />

@@ -1,5 +1,5 @@
 import { FormItem } from '@/components/forms/types/formItem'
-import { InputType } from '@/components/forms/RwForm/types/inputType'
+import { InputType } from '@/components/forms/YwForm/types/inputType'
 export const formItems: FormItem[] = [
     {
         key: 'name',

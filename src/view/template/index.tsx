@@ -1,27 +1,27 @@
-import RwForm from '@/components/forms/RwForm'
-import RwInput from '@/components/forms/RwInput'
-import { InputType } from '@/components/forms/RwForm/types/inputType'
-import RwTable from '@/components/table/RwTable'
+import YwForm from '@/components/forms/YwForm'
+import YwInput from '@/components/forms/YwInput'
+import { InputType } from '@/components/forms/YwForm/types/inputType'
+import YwTable from '@/components/table/YwTable'
 import SvgIcon from '@/components/SvgIcon/index'
 import { defineComponent, reactive, ref } from 'vue'
-import RwTablePage from '@/hoc/tablePage/RwTablePage'
+import YwTablePage from '@/hoc/tablePage/YwTablePage'
 import {
     FormItems,
     formItems2,
     tableData,
-} from '@/components/forms/RwForm/datas'
+} from '@/components/forms/YwForm/datas'
 // import './index.scss'
 import useHttp from '@/hook/useHttp'
-import RwFormStep from '@/components/forms/RwFormStep'
+import YwFormStep from '@/components/forms/YwFormStep'
 import { Button } from 'ant-design-vue'
-import RwTree from '@/components/tree/RwTree'
-import { TablePageOutput } from '@/hoc/tablePage/RwTablePage/types/tablePageOutput'
-import { TablePageIutput } from '@/hoc/tablePage/RwTablePage/types/tablePagInput '
+import YwTree from '@/components/tree/YwTree'
+import { TablePageOutput } from '@/hoc/tablePage/YwTablePage/types/tablePageOutput'
+import { TablePageIutput } from '@/hoc/tablePage/YwTablePage/types/tablePagInput '
 
 export default defineComponent({
     name: 'templatePage',
     components: {
-        RwInput,
+        YwInput,
     },
     setup(props) {
         // // get例子
@@ -107,14 +107,14 @@ export default defineComponent({
 
         return () => (
             <div>
-                <Button type="primary" onClick={Ctl.sub}>
+                {/* <Button type="primary" onClick={Ctl.sub}>
                     222
-                </Button>
+                </Button> */}
                 {/* <div>
-                    <RwForm ref={formRef} />
+                    <YwForm ref={formRef} />
                 </div> */}
 
-                {/* <RwTable
+                {/* <YwTable
                     v-slots={{
                         action: '1111',
                     }}
@@ -124,7 +124,7 @@ export default defineComponent({
                 <SvgIcon name="iconjingweidu" size="50" color="red" /> */}
 
                 <div>
-                    <RwTablePage
+                    <YwTablePage
                         ref={tablePage}
                         {...config}
                         v-slots={
@@ -138,11 +138,11 @@ export default defineComponent({
                     />
                 </div>
                 <div>
-                    <RwFormStep formItems={Ctl.formItems2} />
+                    <YwFormStep formItems={Ctl.formItems2} />
                 </div>
 
                 <div>
-                    <RwTree />
+                    <YwTree />
                 </div>
             </div>
         )
