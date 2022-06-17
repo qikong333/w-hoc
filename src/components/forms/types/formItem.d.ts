@@ -3,7 +3,7 @@ import { InputType } from '../YwForm/types/inputType'
 
 export type ModeType = 'view' | 'edit' | 'add' | 'table' | 'search' | 'excel'
 /*** 下拉模式（multiple-多选、tags-标签）*/
-export type SelectMode = 'multiple' | 'tags' | 'combobox'
+export type SelectMode = 'multiple' | 'tags' // | 'combobox'
 /*** 开关文字描述*/
 export type SwitchMode = {
     onText?: string

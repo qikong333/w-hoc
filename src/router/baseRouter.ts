@@ -18,11 +18,6 @@ const baseRouter = [
         component: () => import('@/view/mapbox/index'),
     },
     {
-        path: '/Home',
-        name: '页面12',
-        component: () => import('@/components/HelloWorld.vue'),
-    },
-    {
         path: '/tools/router',
         name: '权限菜单编辑器',
         component: () => import('@/tools/router/index'),

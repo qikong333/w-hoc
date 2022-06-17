@@ -1,6 +1,6 @@
 import { defineComponent, reactive, watchEffect } from 'vue'
 import { Select } from 'ant-design-vue'
-import { FormItem } from '../types/formItem'
+import { FormItem, SelectMode } from '../types/formItem'
 
 interface Props {
     value: string
@@ -26,7 +26,7 @@ const YwSelect = defineComponent({
                     disabled={props.item?.disabled}
                     allowClear
                     show-search
-                    mode={props.item?.InputMode}
+                    mode={props.item?.InputMode as SelectMode}
                     optionFilterProp="label"
                     placeholder={props.item?.placeholder}
                     v-model:value={Ctl._value}

@@ -17,12 +17,9 @@ import viewElement from './viewElement'
 import { FormInput } from './types/formIntput'
 import { FormOutput } from './types/formOutput'
 
-name: 'YwForm'
-
 const YwForm = defineComponent({
-    name: 'YwForm',
     emits: ['update:formData', 'change'],
-    props: ['formItems', 'mode', 'formData'],
+    props: ['formItems', 'mode', 'formData', 'config'],
     setup(props: FormInput, { emit, expose }): () => JSX.Element {
         const FormItemNode = Form.Item
 
@@ -129,10 +126,11 @@ const YwForm = defineComponent({
             <>
                 {JSON.stringify(Ctl.form)}
                 <Form
+                    layout={props.config?.layout}
                     model={Ctl.form}
                     ref={formRef}
-                    label-col={{ span: 4 }}
-                    wrapper-col={{ span: 14 }}
+                    label-col={{ span: props.config?.labelCol ?? 4 }}
+                    wrapper-col={{ span: props.config?.wrapperRol ?? 14 }}
                     rules={rulesRef.value}
                 >
                     {config.value.map(data => element(data))}

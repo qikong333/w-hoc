@@ -85,4 +85,6 @@ export enum InputType {
     MapPoint,
     /** 表格输入框 */
     TableInput,
+    /** 上传图片 */
+    Upload,
 }

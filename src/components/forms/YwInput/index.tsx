@@ -1,5 +1,4 @@
 import { defineComponent, reactive, ref, watch, watchEffect } from 'vue'
-import './index.scss'
 import { Input } from 'ant-design-vue'
 import { FormItem } from '../types/formItem'
 

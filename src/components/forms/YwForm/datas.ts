@@ -138,24 +138,29 @@ export const FormItems: FormItem[] = [
         label: '地图区域',
     },
     {
-        defaultValue: {
-            a1: { a: '1', b: '2', c: '3', d: '4', e: '5' },
-            b1: { a: '1', b: '2', c: '3', d: '4', e: '5' },
-        },
-        key: 'tableinput',
-        type: InputType.TableInput,
-        label: '表格输入框',
-        InputMode: {
-            row: {
-                a: '第一天',
-                b: '第二天',
-                c: '第三天',
-                d: '第四天',
-                e: '第五天',
-            },
-            list: { a1: '水', b1: '肥料', c1: '日照', d1: '温度', e1: '湿度' },
-        },
+        key: 'img',
+        type: InputType.Upload,
+        label: '图片上传',
     },
+    // {
+    //     defaultValue: {
+    //         a1: { a: '1', b: '2', c: '3', d: '4', e: '5' },
+    //         b1: { a: '1', b: '2', c: '3', d: '4', e: '5' },
+    //     },
+    //     key: 'tableinput',
+    //     type: InputType.TableInput,
+    //     label: '表格输入框',
+    //     InputMode: {
+    //         row: {
+    //             a: '第一天',
+    //             b: '第二天',
+    //             c: '第三天',
+    //             d: '第四天',
+    //             e: '第五天',
+    //         },
+    //         list: { a1: '水', b1: '肥料', c1: '日照', d1: '温度', e1: '湿度' },
+    //     },
+    // },
 ]
 
 export const formData = {

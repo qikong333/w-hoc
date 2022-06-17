@@ -17,6 +17,7 @@ import { Button } from 'ant-design-vue'
 import YwTree from '@/components/tree/YwTree'
 import { TablePageOutput } from '@/hoc/tablePage/YwTablePage/types/tablePageOutput'
 import { TablePageIutput } from '@/hoc/tablePage/YwTablePage/types/tablePagInput '
+import getConfig from '@/utils/common/getConfig'
 
 export default defineComponent({
     name: 'templatePage',
@@ -24,6 +25,7 @@ export default defineComponent({
         YwInput,
     },
     setup(props) {
+        console.log(getConfig().aa)
         // // get例子
         // useHttp({
         //     baseURL: 'http://192.168.0.80:8096/',
@@ -56,6 +58,8 @@ export default defineComponent({
         //     .then(res => {
         //         console.log(res)
         //     })
+
+        // import.meta.env.VITE_APP_WEB_URL
 
         const formRef = ref<any>(null)
 
@@ -107,23 +111,29 @@ export default defineComponent({
 
         return () => (
             <div>
-                {/* <Button type="primary" onClick={Ctl.sub}>
-                    222
-                </Button> */}
-                {/* <div>
-                    <YwForm ref={formRef} />
-                </div> */}
+                <div>
+                    <YwForm
+                        ref={formRef}
+                        config={
+                            {
+                                // labelCol: 12,
+                                // wrapperRol: 12,
+                                // layout: 'vertical',
+                            }
+                        }
+                    />
+                </div>
 
                 {/* <YwTable
                     v-slots={{
                         action: '1111',
                     }}
                 /> */}
-                {/* 
-                <Button onClick={sub}>提交</Button>
-                <SvgIcon name="iconjingweidu" size="50" color="red" /> */}
 
-                <div>
+                {/* <Button onClick={sub}>提交</Button> */}
+                {/* <SvgIcon name="iconjingweidu" size="50" color="red" /> */}
+
+                {/* <div>
                     <YwTablePage
                         ref={tablePage}
                         {...config}
@@ -143,7 +153,7 @@ export default defineComponent({
 
                 <div>
                     <YwTree />
-                </div>
+                </div> */}
             </div>
         )
     },

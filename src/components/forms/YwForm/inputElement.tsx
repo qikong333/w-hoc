@@ -13,6 +13,7 @@ import YwMapPoint from '../YwMapPoint'
 import MapRange from '../YwMapRange'
 import YwTableInput from '../YwTableInput/index'
 import { Form } from 'ant-design-vue'
+import YwUpload from '../YwUpload'
 
 /**控制表单改变的总方法 */
 const changForm = (formItem: FormItem, form: any, emit: Function) => {
@@ -157,6 +158,11 @@ const inputElement = (formItem: FormItem, form: any, emit: Function) => {
                     />
                 </FormItemRestNode>
             )
+            break
+
+        case InputType.Upload:
+            el = <YwUpload />
+
             break
 
         default:
