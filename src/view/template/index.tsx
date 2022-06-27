@@ -114,13 +114,11 @@ export default defineComponent({
                 <div>
                     <YwForm
                         ref={formRef}
-                        config={
-                            {
-                                // labelCol: 12,
-                                // wrapperRol: 12,
-                                // layout: 'vertical',
-                            }
-                        }
+                        config={{
+                            labelCol: 8,
+                            wrapperRol: 18,
+                            layout: 'inline',
+                        }}
                     />
                 </div>
 

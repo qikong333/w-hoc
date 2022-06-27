@@ -22,6 +22,11 @@ const baseRouter = [
         name: '权限菜单编辑器',
         component: () => import('@/tools/router/index'),
     },
+    {
+        path: '/tools/formCreat',
+        name: '表单编辑器',
+        component: () => import('@/tools/formCreat/index'),
+    },
 ]
 
 export default baseRouter

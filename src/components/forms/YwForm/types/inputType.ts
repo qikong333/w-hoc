@@ -23,14 +23,14 @@ export enum InputType {
      *  可查询单选
      */
     Select,
-    /**
-     *  可查询单选
-     */
-    SelectSearch,
-    /**
-     *  可多选下拉框
-     */
-    MultipleSelect,
+    // /**
+    //  *  可查询单选
+    //  */
+    // SelectSearch,
+    // /**
+    //  *  可多选下拉框
+    //  */
+    // MultipleSelect,
     /**
      *  文本框
      */
@@ -60,7 +60,7 @@ export enum InputType {
      */
     DatePicker,
     /**
-     *  单个时间（时分）
+     *  时间范围
      */
     RangePicker,
     /**
