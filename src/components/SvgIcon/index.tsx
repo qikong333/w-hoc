@@ -1,6 +1,7 @@
 import { defineComponent, reactive, watch, ref } from 'vue'
 import './index.scss'
 import { Tooltip } from 'ant-design-vue'
+import s from './index.module.scss'
 
 type iconType = 'normal' | 'reverse' | 'box' | 'circle'
 
@@ -46,7 +47,7 @@ export default defineComponent({
                             placement={placement.value as any}
                             title={tooltip.value as any}
                         >
-                            <svg class="svg-icon" aria-hidden="true">
+                            <svg class={s['svg-icon']} aria-hidden="true">
                                 <use xlinkHref={`#${name.value}`} />
                             </svg>
                         </Tooltip>

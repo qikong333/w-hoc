@@ -18,11 +18,13 @@ import YwTree from '@/components/tree/YwTree'
 import { TablePageOutput } from '@/hoc/tablePage/YwTablePage/types/tablePageOutput'
 import { TablePageIutput } from '@/hoc/tablePage/YwTablePage/types/tablePagInput '
 import getConfig from '@/utils/common/getConfig'
+import YwMune from '@/components/YwMune'
 
 export default defineComponent({
     name: 'templatePage',
     components: {
         YwInput,
+        YwMune,
     },
     setup(props) {
         console.log(getConfig().aa)
@@ -111,6 +113,9 @@ export default defineComponent({
 
         return () => (
             <div>
+                <div>
+                    <YwMune />
+                </div>
                 <div>
                     <YwForm
                         ref={formRef}
