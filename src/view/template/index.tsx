@@ -65,41 +65,41 @@ export default defineComponent({
 
         const formRef = ref<any>(null)
 
-        const config: TablePageIutput = reactive({
-            config: FormItems,
-            form: {},
-            table: {
-                rowKey: 'id',
-                tableData: tableData,
-            },
-            api: {
-                load: async () => {
-                    console.log('load')
-                    return tableData
-                },
-                add: async () => {
-                    console.log('add')
-                },
-                edit: async () => {
-                    console.log('edit')
-                },
-                delete: async () => {
-                    console.log('delete')
-                },
-                view: async () => {
-                    console.log('view')
-                },
-                search: async () => {
-                    console.log('search')
-                },
-                exportExcel: async () => {
-                    console.log('exportExcel')
-                },
-                batchDeletion: async () => {
-                    console.log('batchDeletion')
-                },
-            },
-        })
+        // const config: TablePageIutput = reactive({
+        //     config: FormItems,
+        //     form: {},
+        //     table: {
+        //         rowKey: 'id',
+        //         tableData: tableData,
+        //     },
+        //     api: {
+        //         load: async () => {
+        //             console.log('load')
+        //             return tableData
+        //         },
+        //         add: async () => {
+        //             console.log('add')
+        //         },
+        //         edit: async () => {
+        //             console.log('edit')
+        //         },
+        //         delete: async () => {
+        //             console.log('delete')
+        //         },
+        //         view: async () => {
+        //             console.log('view')
+        //         },
+        //         search: async () => {
+        //             console.log('search')
+        //         },
+        //         exportExcel: async () => {
+        //             console.log('exportExcel')
+        //         },
+        //         batchDeletion: async () => {
+        //             console.log('batchDeletion')
+        //         },
+        //     },
+        // })
         const a = ref('')
 
         const tablePage = ref<TablePageOutput | null>(null)
