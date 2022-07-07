@@ -32,16 +32,17 @@ export default ({ mode }) => {
             vue(),
             themePreprocessorPlugin({
                 less: {
-                    multipleScopeVars: [
-                        {
-                            scopeName: 'theme-defalult',
-                            path: path.resolve('src/theme/default.less'),
-                        },
-                        {
-                            scopeName: 'theme-green',
-                            path: path.resolve('src/theme/green.less'),
-                        },
-                    ],
+                    // 主题代码
+                    // multipleScopeVars: [
+                    //     {
+                    //         scopeName: 'theme-defalult',
+                    //         path: path.resolve('src/theme/default.less'),
+                    //     },
+                    //     {
+                    //         scopeName: 'theme-green',
+                    //         path: path.resolve('src/theme/green.less'),
+                    //     },
+                    // ],
                 },
             }),
             WindiCSS(),

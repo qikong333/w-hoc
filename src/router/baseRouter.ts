@@ -27,6 +27,11 @@ const baseRouter = [
         name: '表单编辑器',
         component: () => import('@/tools/formCreat/index'),
     },
+    {
+        path: '/threejs',
+        name: '3d',
+        component: () => import('@/threejs/index'),
+    },
 ]
 
 export default baseRouter
