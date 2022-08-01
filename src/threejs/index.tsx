@@ -33,12 +33,13 @@ export default defineComponent({
         material.value.needsUpdate = true
 
         // LIGHTS
-        // const ambientLight = new THREE.AmbientLight(0xffffff, 0.3)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.9)
         // const light = new THREE.DirectionalLight(0xffffff, 1.0)
         // const sphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1)
         const light = new THREE.HemisphereLight(0xffffff, 0x080820, 1)
         scene.add(light)
         // scene.add(ambientLight)
+        //
 
         // const pointLinght = new THREE.PointLight(0xffffff, 0.5)
         // pointLinght.position.x = 2
@@ -139,9 +140,13 @@ export default defineComponent({
             const texture = new THREE.TextureLoader().load(url)
             texture.wrapS = THREE.RepeatWrapping
             texture.wrapT = THREE.RepeatWrapping
-            texture.repeat.set(8, 8)
+            texture.repeat.set(6, 6)
             // texture.anisotropy = 10
-            const material1 = getMaterials(radioVal.value, texture)
+            const material1 = getMaterials(
+                radioVal.value,
+                texture,
+                colorVal.value
+            )
 
             const mu = scene.getObjectByName('222')
             mu.children[0].material = material1
