@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+        <meta
+            name="keywords"
+            content="w3h5,图片变灰,图片处理,图片变灰色,图片处理成灰色,图片一键变灰,图片灰色"
+        />
+        <meta
+            name="description"
+            content="一键将彩色图片转换成灰色，支持 .jpeg , .png , .gif 等格式。"
+        />
+        <title>图片一键变灰 - Web前端资源网</title>
+        <meta charset="utf-8" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/[email protected]/dist/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+        />
+        <style>
+            img,
+            canvas {
+                max-width: 100%;
+            }
+
+            .container {
+                margin-top: 5%;
+                margin-bottom: 5%;
+            }
+
+            .mt {
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container text-center">
+            <h1>图片一键变灰</h1>
+            <p>
+                点击选择图片，一键将彩色图片转换成灰色，支持 .jpeg , .png , .gif
+                等格式。 .gif 图片只能处理第一帧。
+            </p>
+            <div class="row justify-content-md-center mt">
+                <div class="col-md-8">
+                    <p>原图：</p>
+                    <p id="text-show" style="display: none">处理中...</p>
+                    <img src="" alt="" id="img-show" />
+                    <p class="mt">灰度模式：</p>
+                    <canvas id="canvas" style="display: none"></canvas>
+                    <img src="" alt="" id="img-gray" />
+                </div>
+            </div>
+            <div>
+                <p>电脑右击另存为图片，手机长按保存图片。</p>
+                <label for="upload-img">
+                    <input type="file" id="upload-img" style="display: none" />
+                    <span class="btn btn-success mt">选择图片</span>
+                </label>
+                <a href="/" class="btn btn-outline-primary mt">返回首页</a>
+            </div>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(function () {
+                $('#upload-img').change(function () {
+                    //判断按钮变化
+                    $('#text-show').show() //提示处理中...
+                    let _URL = window.URL || window.webkitURL,
+                        file,
+                        img
+                    if ((file = this.files[0])) {
+                        img = new Image()
+                        img.onload = function () {
+                            //图片加载完
+                            $('#text-show').hide()
+                            $('#img-show').attr('src', this.src)
+                            huidu(this.src) //灰度处理
+                            $('#img-gray').attr('src', canvas.toDataURL()) //显示图片
+                        }
+                        img.src = _URL.createObjectURL(file)
+                    }
+                })
+
+                /*
+                 *function
+                 *函数名称：huidu
+                 *功能：把图片转换为灰度图
+                 *参数：src（原图的url）
+                 *返回值：（转换完成后的图片url）
+                 */
+                function huidu(src) {
+                    /*创建一个canvas*/
+                    // var canvas = document.createElement('canvas');
+                    var canvas = document.getElementById('canvas')
+                    var ctx = canvas.getContext('2d')
+                    var img = new Image()
+                    img.src = src
+                    canvas.height = img.height
+                    canvas.width = img.width
+                    ctx.drawImage(img, 0, 0)
+                    var imgdata = ctx.getImageData(
+                        0,
+                        0,
+                        canvas.width,
+                        canvas.height
+                    )
+                    var data = imgdata.data
+                    /*灰度处理：求r，g，b的均值，并赋回给r，g，b*/
+                    for (var i = 0, n = data.length; i < n; i += 4) {
+                        var average = (data[i] + data[i + 1] + data[i + 2]) / 3
+                        data[i] = average
+                        data[i + 1] = average
+                        data[i + 2] = average
+                    }
+                    ctx.putImageData(imgdata, 0, 0)
+                    /*返回处理之后的src*/
+                    return canvas.toDataURL()
+                }
+
+                var _hmt = _hmt || []
+                ;(function () {
+                    var hm = document.createElement('script')
+                    hm.src =
+                        'https://hm.baidu.com/hm.js?65389d6f23278dbcaa0c5d2db8139c7d'
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(hm, s)
+                })()
+            })
+        </script>
+    </body>
+</html>

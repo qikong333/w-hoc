@@ -4,11 +4,13 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js'
-import { Button } from 'ant-design-vue'
+import { Button, Radio } from 'ant-design-vue'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 import Color from './color'
+import getMaterials from './material'
+import YwRadio from '@/components/forms/YwRadio'
 
 const scene = new THREE.Scene()
 
@@ -22,18 +24,27 @@ export default defineComponent({
             alpha: true,
         })
 
-        scene.background = new THREE.Color(0xaaaaaa)
+        const colorVal = ref()
+
+        scene.background = new THREE.Color(0xffffff)
 
         const camera = new THREE.PerspectiveCamera(25, 500 / 500, 0.1, 1000)
         const material = ref(new THREE.MeshLambertMaterial({ color: 0x00ffff }))
         material.value.needsUpdate = true
 
         // LIGHTS
-        // const ambientLight = new THREE.AmbientLight(0x333333)
+        // const ambientLight = new THREE.AmbientLight(0xffffff, 0.3)
         // const light = new THREE.DirectionalLight(0xffffff, 1.0)
         // const sphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1)
         const light = new THREE.HemisphereLight(0xffffff, 0x080820, 1)
         scene.add(light)
+        // scene.add(ambientLight)
+
+        // const pointLinght = new THREE.PointLight(0xffffff, 0.5)
+        // pointLinght.position.x = 2
+        // pointLinght.position.y = 3
+        // pointLinght.position.z = 4
+        // scene.add(pointLinght)
 
         // light.position.set(0.32, 0.89, 4.7)
         // sphereLight.position.set(-0.32, 0.89, 4.7)
@@ -130,27 +141,37 @@ export default defineComponent({
             texture.wrapT = THREE.RepeatWrapping
             texture.repeat.set(8, 8)
             // texture.anisotropy = 10
-            const material1 = new THREE.MeshStandardMaterial({
-                normalMap: texture,
-                // map: texture,
-                // bumpMap: texture,
-                // bumpScale: 0.1,
+            const material1 = getMaterials(radioVal.value, texture)
 
-                // lightMap: texture,
-            })
             const mu = scene.getObjectByName('222')
             mu.children[0].material = material1
         }
 
+        const radioVal = ref(1)
+        const radio = [
+            { label: 'MeshLambertMaterial', value: 1 },
+            { label: 'MeshMatcapMaterial', value: 2 },
+        ]
+
         return () => (
             <>
+                {radioVal.value}
+                <YwRadio
+                    v-model:value={radioVal.value}
+                    item={{
+                        label: '材质',
+                        options: radio,
+                    }}
+                ></YwRadio>
+
                 <Color onChange={getColor} />
                 <Button onClick={cut}>截圖</Button>
+                {colorVal.value}
                 <input
+                    v-model={colorVal.value}
                     type="color"
                     id="head"
                     name="head"
-                    value="#e66465"
                     onChange={changeColor}
                 />
                 <div class="flex">
