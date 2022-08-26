@@ -22,8 +22,11 @@ export default defineComponent({
         const renderer = new THREE.WebGLRenderer({
             antialias: true,
             alpha: true,
+            precision: 'highp',
         })
-
+        renderer.outputEncoding = THREE.sRGBEncoding
+        renderer.toneMapping = THREE.ACESFilmicToneMapping
+        renderer.toneMappingExposure = 1.25
         const colorVal = ref()
 
         scene.background = new THREE.Color(0xffffff)
@@ -143,7 +146,8 @@ export default defineComponent({
             texture.repeat.set(6, 6)
             // texture.anisotropy = 10
             const material1 = getMaterials(
-                radioVal.value,
+                // radioVal.value,
+                2,
                 texture,
                 colorVal.value
             )

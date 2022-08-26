@@ -32,6 +32,11 @@ const baseRouter = [
         name: '3d',
         component: () => import('@/threejs/index'),
     },
+    {
+        path: '/gui',
+        name: 'gui',
+        component: () => import('@/threejs/GUI/index.vue'),
+    },
 ]
 
 export default baseRouter
