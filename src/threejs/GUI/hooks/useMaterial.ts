@@ -5,22 +5,31 @@ export default function (scene: THREE.Scene) {
     material.needsUpdate = true
     material.side = THREE.DoubleSide
 
-    function setMaterial(name: string, material1) {
-        console.log(material1)
-
+    function setMaterial(name: string, material1: THREE.Material) {
         const mu = scene.getObjectByName(name)
 
         mu.traverse(function (obj) {
             if (obj.type === 'Mesh') {
-                console.log(obj)
                 //几何体UV坐标定义
 
-                obj.material.map = material1
+                obj.material = material1
+            }
+        })
+    }
+
+    function setMaterialColor(name: string, color: string) {
+        const mu = scene.getObjectByName(name)
+        mu.traverse(function (obj) {
+            if (obj.type === 'Mesh') {
+                //几何体UV坐标定义
+
+                obj.material.color = new THREE.Color(color)
             }
         })
     }
     return {
         material,
         setMaterial,
+        setMaterialColor,
     }
 }

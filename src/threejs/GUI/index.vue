@@ -10,8 +10,12 @@
                     <a-row>
                         <a-col :span="4">背景：</a-col>
                         <a-col :span="18">
-                            <a-select ref="select" style="width: 120px" v-model:value="sceneCtl.selectValue"
-                                @change="sceneCtl.selectChange">
+                            <a-select
+                                ref="select"
+                                style="width: 120px"
+                                v-model:value="sceneCtl.selectValue"
+                                @change="sceneCtl.selectChange"
+                            >
                                 <a-select-option value="color">
                                     颜色
                                 </a-select-option>
@@ -20,11 +24,21 @@
                                 </a-select-option>
                             </a-select>
 
-                            <input v-if="sceneCtl.selectValue === 'color'" type="color"
-                                @change="r => changeSceneBg(r.target?.value, 1)" />
-                            <div v-if="sceneCtl.selectValue === 'image'" class="bgbox">
-                                <img @click="changeSceneBg(item.url, 0)" :src="item.url" v-for="item in bgData"
-                                    :key="item.url" />
+                            <input
+                                v-if="sceneCtl.selectValue === 'color'"
+                                type="color"
+                                @change="r => changeSceneBg(r.target?.value, 1)"
+                            />
+                            <div
+                                v-if="sceneCtl.selectValue === 'image'"
+                                class="bgbox"
+                            >
+                                <img
+                                    @click="changeSceneBg(item.url, 0)"
+                                    :src="item.url"
+                                    v-for="item in bgData"
+                                    :key="item.url"
+                                />
                             </div>
                         </a-col>
                     </a-row>
@@ -32,17 +46,66 @@
                 <a-collapse-panel key="2" header="灯光"> 111 </a-collapse-panel>
                 <a-collapse-panel key="3" header="模型"> 333 </a-collapse-panel>
                 <a-collapse-panel key="4" header="材质">
-                    <div @click="textureCtl.select(item.url)" v-for="item in textureCtl.list" :key="item.url">
+                    <div
+                        @click="textureCtl.select(item.url)"
+                        v-for="item in textureCtl.list"
+                        :key="item.url"
+                    >
                         {{ item.name }}
                     </div>
+                    <a-row>
+                        <a-col :span="4"> 颜色: </a-col>
+                        <a-col :span="20">
+                            <input
+                                type="color"
+                                @change="
+                                    r => textureCtl.changeColor(r.target?.value)
+                                "
+                        /></a-col>
+
+                        <a-col :span="24"> offset: </a-col>
+                        <a-col :span="4"> x: </a-col>
+                        <a-col :span="20">
+                            <a-slider
+                                v-model:value="textureCtl.offset.x"
+                                :min="0"
+                                :max="5"
+                                :step="0.01"
+                                @change="r => textureCtl.changeV(r, 'x')"
+                            />
+                        </a-col>
+                        <a-col :span="4"> y: </a-col>
+                        <a-col :span="20">
+                            <a-slider
+                                v-model:value="textureCtl.offset.y"
+                                :min="0"
+                                :max="5"
+                                :step="0.01"
+                                @change="r => textureCtl.changeV(r, 'y')"
+                            />
+                        </a-col>
+                    </a-row>
+                    <a-row>
+                        <a-col :span="24"> rotation: </a-col>
+                        <a-col :span="24">
+                            <a-slider
+                                v-model:value="textureCtl.rotation.v"
+                                :min="0"
+                                :max="360"
+                                :step="0.1"
+                                @change="r => textureCtl.changeV(r, 'rotation')"
+                            />
+                        </a-col>
+                    </a-row>
                 </a-collapse-panel>
                 <a-collapse-panel key="5" header="截图">
-                    <a-button @click="rendererCtl.screenshot">
-                        截图
-                    </a-button>
+                    <a-button @click="rendererCtl.screenshot"> 截图 </a-button>
                     <div class="bgbox">
-                        <img :src='url' v-for='url in rendererCtl.imgURL' :key="url" />
-
+                        <img
+                            :src="url"
+                            v-for="url in rendererCtl.imgURL"
+                            :key="url"
+                        />
                     </div>
                 </a-collapse-panel>
             </a-collapse>
@@ -71,35 +134,47 @@ const rendererCtl = reactive({
     imgURL: [],
     screenshot() {
         rendererCtl.imgURL.push(cut(scene, camera))
-    }
+    },
 })
 const sceneCtl = reactive({
     selectValue: 'color',
 })
 
 const textureCtl = reactive({
-    list: [
-        { name: '纹理1', url: 'src/threejs/img/map.jpeg' }
-    ],
+    changeColor(c) {
+        setMaterialColor('111', c)
+    },
+    changeV(e, t) {
+        setAngle(e, t)
+    },
+    offset: {
+        x: 0,
+        y: 0,
+    },
+    rotation: {
+        v: 0,
+    },
+    value1: 0,
+    value2: 0,
+    list: [{ name: '纹理1', url: 'src/threejs/img/nMap.jpg' }],
     select(url) {
         const m = loadTexture(url)
-        console.log(m);
+        console.log(m)
 
         setMaterial('111', m)
-    }
+    },
 })
 
 const { renderer, cut } = useRenderer()
 const { scene, changeSceneBg } = useScene()
 const { camera, controls } = useCamera(renderer)
-const { material, setMaterial } = useMaterial(scene)
+const { material, setMaterial, setMaterialColor } = useMaterial(scene)
 const { light, ambientLight } = useLight()
-const { texture, loadTexture } = useTexture()
+const { texture, loadTexture, setAngle } = useTexture({ scene })
 scene.add(light)
 useLoadModels(scene)
 
 onMounted(() => {
-
     canvasRef.value.appendChild(renderer.domElement)
 
     function animate() {
@@ -117,6 +192,5 @@ onMounted(() => {
 .bgbox {
     height: 50vh;
     overflow: auto;
-
 }
 </style>
