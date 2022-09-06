@@ -19,6 +19,9 @@ export default function (scene: THREE.Scene) {
 
     function setMaterialColor(name: string, color: string) {
         const mu = scene.getObjectByName(name)
+        console.log(name)
+        console.log(mu)
+
         mu.traverse(function (obj) {
             if (obj.type === 'Mesh') {
                 //几何体UV坐标定义

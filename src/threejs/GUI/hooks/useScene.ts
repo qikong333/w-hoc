@@ -2,7 +2,7 @@ import * as THREE from 'three'
 
 export default function () {
     const scene = new THREE.Scene()
-    scene.background = new THREE.Color(0x666666)
+    scene.background = new THREE.Color(0xffffff)
 
     const changeSceneBg = (color: string, n: number) => {
         if (n === 1) {

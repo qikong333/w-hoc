@@ -1,9 +1,13 @@
-import { state } from './state'
-import { createStore } from 'vuex'
+import { defineStore } from 'pinia'
 
-export default createStore({
-  state,
-  mutations: {},
-  actions: {},
-  modules: {},
+export const mainStore = defineStore('main', {
+    state: () => {
+        return {
+            threejs: {
+                name: 434,
+            },
+        }
+    },
+    getters: {},
+    actions: {},
 })

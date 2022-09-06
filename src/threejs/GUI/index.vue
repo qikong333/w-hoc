@@ -5,7 +5,7 @@
             <div class="canvas" ref="canvasRef"></div>
         </a-col>
         <a-col :span="6">
-            <a-collapse>
+            <a-collapse v-model:activeKey="activeKey" accordion>
                 <a-collapse-panel key="1" header="场景">
                     <a-row>
                         <a-col :span="4">背景：</a-col>
@@ -14,7 +14,6 @@
                                 ref="select"
                                 style="width: 120px"
                                 v-model:value="sceneCtl.selectValue"
-                                @change="sceneCtl.selectChange"
                             >
                                 <a-select-option value="color">
                                     颜色
@@ -43,16 +42,40 @@
                         </a-col>
                     </a-row>
                 </a-collapse-panel>
-                <a-collapse-panel key="2" header="灯光"> 111 </a-collapse-panel>
-                <a-collapse-panel key="3" header="模型"> 333 </a-collapse-panel>
+                <a-collapse-panel key="2" header="灯光">
+                    开发中...
+                </a-collapse-panel>
+                <a-collapse-panel key="3" header="模型">
+                    <div
+                        style="background: #000"
+                        v-for="item in modelData"
+                        :key="item.name"
+                        @click="selectModel(item.name)"
+                    >
+                        <img
+                            :src="item.model.img"
+                            alt=""
+                            class=""
+                            width="100"
+                            height="100"
+                        />
+                    </div>
+                </a-collapse-panel>
                 <a-collapse-panel key="4" header="材质">
                     <div
                         @click="textureCtl.select(item.url)"
-                        v-for="item in textureCtl.list"
+                        v-for="item in materialDatas"
                         :key="item.url"
                     >
-                        {{ item.name }}
+                        <img
+                            :src="item.name"
+                            alt=""
+                            class=""
+                            width="100"
+                            height="100"
+                        />
                     </div>
+
                     <a-row>
                         <a-col :span="4"> 颜色: </a-col>
                         <a-col :span="20">
@@ -114,19 +137,29 @@
 </template>
 
 <script setup lang="ts">
+import router from '@/router'
 import select from 'ant-design-vue/lib/select'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { onMounted, reactive, ref } from 'vue'
-import { bgData } from './data'
+import { computed, onMounted, reactive, ref } from 'vue'
+import Global from './cosnt'
+import { bgData, modelData } from './data'
 import useCamera from './hooks/useCamera'
 import useLight from './hooks/useLight'
-import useLoadModels from './hooks/useLoadModels'
+import useModels from './hooks/useModels'
 import useMaterial from './hooks/useMaterial'
 import useRenderer from './hooks/useRenderer'
 import useScene from './hooks/useScene'
 import useTexture from './hooks/useTexture'
+import { mainStore } from '@/store'
+const store = mainStore()
+const bgList = ref([])
+const activeKey = ref([])
+const materialDatas = computed(() => {
+    const arr = modelData.filter(r => r.name === store.threejs.name)
+    return arr[0].maps
+})
 
 const gltfLoader = new GLTFLoader()
 const canvasRef = ref()
@@ -142,7 +175,7 @@ const sceneCtl = reactive({
 
 const textureCtl = reactive({
     changeColor(c) {
-        setMaterialColor('111', c)
+        setMaterialColor(String(store.threejs.name), c)
     },
     changeV(e, t) {
         setAngle(e, t)
@@ -156,12 +189,18 @@ const textureCtl = reactive({
     },
     value1: 0,
     value2: 0,
-    list: [{ name: '纹理1', url: 'src/threejs/img/nMap.jpg' }],
+    // list: computed(() => {
+    //     const arr = []
+    //     materialDatas.map(async r => {
+    //         const path = await r.name
+    //         r.name = path?.default
+    //         arr.push(r)
+    //     })
+    //     return arr
+    // }),
     select(url) {
         const m = loadTexture(url)
-        console.log(m)
-
-        setMaterial('111', m)
+        setMaterial(String(store.threejs.name), m)
     },
 })
 
@@ -171,9 +210,10 @@ const { camera, controls } = useCamera(renderer)
 const { material, setMaterial, setMaterialColor } = useMaterial(scene)
 const { light, ambientLight } = useLight()
 const { texture, loadTexture, setAngle } = useTexture({ scene })
+const { loadModel, deleteModel } = useModels(scene)
 scene.add(light)
-useLoadModels(scene)
 
+loadModel()
 onMounted(() => {
     canvasRef.value.appendChild(renderer.domElement)
 
@@ -186,6 +226,12 @@ onMounted(() => {
 
     animate()
 })
+
+function selectModel(name: number) {
+    deleteModel()
+    store.threejs.name = name
+    loadModel()
+}
 </script>
 
 <style lang="scss" scoped>

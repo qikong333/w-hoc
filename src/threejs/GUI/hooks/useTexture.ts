@@ -1,5 +1,8 @@
 import * as THREE from 'three'
 import { Vector2 } from 'three'
+import Global from '../cosnt'
+import { mainStore } from '@/store'
+const store = mainStore()
 
 export default function ({ scene }) {
     let texture: THREE.Texture = null
@@ -9,22 +12,37 @@ export default function ({ scene }) {
         texture.flipY = false
         texture.wrapS = THREE.RepeatWrapping
         texture.wrapT = THREE.RepeatWrapping
-        // const m = new THREE.MeshLambertMaterial({
-        //     aoMap: texture, //设置
-        // })
-
+        texture.encoding = THREE.sRGBEncoding
+        // texture.wrapS = THREE.RepeatWrapping
+        // texture.wrapT = THREE.RepeatWrapping
+        // // const m = new THREE.MeshLambertMaterial({
+        // //     aoMap: texture, //设置
+        // // })
+        // const nMap = new THREE.TextureLoader().load(
+        //     'src/threejs/img/NormalMap.webp'
+        // )
+        // const aoMap = new THREE.TextureLoader().load(
+        //     'src/threejs/img/aoMap.png'
+        // )
+        // const map = new THREE.TextureLoader().load(
+        //     'src/threejs/img/basecolor.webp'
+        // )
+        // aoMap.flipY = false
+        // map.flipY = false
+        // nMap.flipY = false
+        // MeshLambertMaterial MeshStandardMaterial
         const m = new THREE.MeshStandardMaterial({
-            // aoMap: texture,
+            // aoMap: aoMap,
             aoMapIntensity: 0.8,
             alphaToCoverage: true,
             // alphaMap: Mei.height,
-            // map: texture,
+            map: texture,
             // displacementMap: texture,
             // displacementScale: 0,
             // displacementBias: 1,
             // blendDstAlpha: THREE.ObjectSpaceNormalMap,
-            // color: new THREE.Color(color),
-            normalMap: texture,
+            color: new THREE.Color('#fff'),
+            // normalMap: nMap,
             clipIntersection: true,
             // colorWrite: false,
             // normalScale: new THREE.Vector2(0.1, 0.1),
@@ -46,7 +64,7 @@ export default function ({ scene }) {
     }
 
     function setAngle(num, type) {
-        const mu = scene.getObjectByName('111')
+        const mu = scene.getObjectByName(String(store.threejs.name))
 
         mu.traverse(function (obj) {
             if (obj.type === 'Mesh') {
