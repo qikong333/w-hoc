@@ -20,5 +20,6 @@ export default function () {
         return imgData
         // document.body.appendChild(image) //这样就可以查看截出来的图片了
     }
+
     return { renderer, cut }
 }

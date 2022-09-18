@@ -131,6 +131,40 @@
                         />
                     </div>
                 </a-collapse-panel>
+                <a-collapse-panel key="6" header=" Image Upload ">
+                    <a-button @click="loadUploadModel">获取模型 </a-button>
+                    <div>
+                        贴图：
+                        <a-button
+                            @click="getMaterial(item)"
+                            v-for="item in uploadData"
+                            :key="item"
+                        >
+                            {{ item?.value }}
+                        </a-button>
+                    </div>
+                    <div>
+                        logo贴图：
+                        <a-button @click="logoTexture"> logo </a-button>
+                    </div>
+                    <div>
+                        背景色：
+                        <input
+                            type="color"
+                            @change="r => changeBG(r.target?.value)"
+                        />
+                    </div>
+
+                    <div>
+                        rp
+                        <a-slider
+                            :min="0"
+                            :max="100"
+                            :step="1"
+                            @change="r => setRepeat(r)"
+                        />
+                    </div>
+                </a-collapse-panel>
             </a-collapse>
         </a-col>
     </a-row>
@@ -144,7 +178,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { computed, onMounted, reactive, ref } from 'vue'
 import Global from './cosnt'
-import { bgData, modelData } from './data'
+import { bgData, modelData, uploadData } from './data'
 import useCamera from './hooks/useCamera'
 import useLight from './hooks/useLight'
 import useModels from './hooks/useModels'
@@ -153,6 +187,8 @@ import useRenderer from './hooks/useRenderer'
 import useScene from './hooks/useScene'
 import useTexture from './hooks/useTexture'
 import { mainStore } from '@/store'
+import { Upload } from 'ant-design-vue'
+import useImageLoad from './hooks/useImageLoad'
 const store = mainStore()
 const bgList = ref([])
 const activeKey = ref([])
@@ -211,6 +247,8 @@ const { material, setMaterial, setMaterialColor } = useMaterial(scene)
 const { light, ambientLight } = useLight()
 const { texture, loadTexture, setAngle } = useTexture({ scene })
 const { loadModel, deleteModel } = useModels(scene)
+const { loadUploadModel, getMaterial, setRepeat, changeBG, logoTexture } =
+    useImageLoad(scene)
 scene.add(light)
 
 loadModel()

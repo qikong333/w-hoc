@@ -11,6 +11,7 @@ export default function (scene: THREE.Scene) {
     function loadModel() {
         loader.load(
             getItemModel().model.glb,
+            // 'src/threejs/models/upload.glb',
             object => {
                 console.log(object.scene)
                 object.scene

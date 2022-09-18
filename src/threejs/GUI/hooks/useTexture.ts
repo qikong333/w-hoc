@@ -13,6 +13,7 @@ export default function ({ scene }) {
         texture.wrapS = THREE.RepeatWrapping
         texture.wrapT = THREE.RepeatWrapping
         texture.encoding = THREE.sRGBEncoding
+
         // texture.wrapS = THREE.RepeatWrapping
         // texture.wrapT = THREE.RepeatWrapping
         // // const m = new THREE.MeshLambertMaterial({

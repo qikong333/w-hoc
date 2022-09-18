@@ -129,3 +129,50 @@ export const modelData = [
         ],
     },
 ]
+
+export const uploadData = [
+    {
+        name: 'BODY-SR_FRONT_1784',
+        value: '左袖',
+        map: 'src/threejs/assets/imageUpload/zuo.png',
+    },
+
+    {
+        name: 'BODY-SL_FRONT_1775',
+        value: '右袖',
+        map: 'src/threejs/assets/imageUpload/you.png',
+    },
+
+    ,
+    {
+        name: 'BODY-F_FRONT_1744',
+        value: '前幅',
+        map: 'src/threejs/assets/imageUpload/qian.png',
+    },
+    ,
+    {
+        name: 'BODY-B_FRONT_1753',
+        value: '后幅',
+        map: 'src/threejs/assets/imageUpload/hou.png',
+    },
+    // {
+    //     name: 'RIB-COLLAR_FRONT_1805',
+    //     value: '上领',
+    // },
+    // {
+    //     name: 'RIB-B_FRONT_1769',
+    //     value: '后底部',
+    // },
+    // {
+    //     name: 'RIB-F_FRONT_1762',
+    //     value: '前底',
+    // },
+    // {
+    //     name: 'RIB-SL_FRONT_1793',
+    //     value: '右袖口',
+    // },
+    // {
+    //     name: 'RIB-SR_FRONT_1799',
+    //     value: '左袖口',
+    // },
+]
