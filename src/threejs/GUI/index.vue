@@ -43,7 +43,51 @@
                     </a-row>
                 </a-collapse-panel>
                 <a-collapse-panel key="2" header="灯光">
-                    开发中...
+                    <a-row>
+                        <a-col :span="4">天空光:</a-col>
+                        <a-col :span="20">
+                            <input
+                                type="color"
+                                @change="r => setSkyColor(r.target?.value)"
+                            />
+                        </a-col>
+                        <a-col :span="4">地面光:</a-col>
+                        <a-col :span="20">
+                            <input
+                                type="color"
+                                @change="r => setGroundColor(r.target?.value)"
+                            />
+                        </a-col>
+                        <a-col :span="24">position</a-col>
+                        <a-col :span="4">x:</a-col>
+                        <a-col :span="20">
+                            <a-slider
+                                v-model:value="position.x"
+                                :min="-10"
+                                :max="10"
+                                :step="0.01"
+                                @change="r => setPostiont(r, 'x')"
+                            />
+                        </a-col>
+                        <a-col :span="4">y:</a-col>
+                        <a-col :span="20">
+                            <a-slider
+                                v-model:value="position.y"
+                                :min="-10"
+                                :max="10"
+                                :step="0.01"
+                                @change="r => setPostiont(r, 'y')"
+                        /></a-col>
+                        <a-col :span="4">z:</a-col>
+                        <a-col :span="20">
+                            <a-slider
+                                v-model:value="position.z"
+                                :min="-10"
+                                :max="10"
+                                :step="0.01"
+                                @change="r => setPostiont(r, 'z')"
+                        /></a-col>
+                    </a-row>
                 </a-collapse-panel>
                 <a-collapse-panel key="3" header="模型">
                     <div
@@ -84,7 +128,8 @@
                                 @change="
                                     r => textureCtl.changeColor(r.target?.value)
                                 "
-                        /></a-col>
+                            />
+                        </a-col>
 
                         <a-col :span="24"> offset: </a-col>
                         <a-col :span="4"> x: </a-col>
@@ -219,6 +264,12 @@ const materialDatas = computed(() => {
     return arr[0].maps
 })
 
+const position = ref({
+    x: 0,
+    y: 0,
+    z: 0,
+})
+
 const gltfLoader = new GLTFLoader()
 const canvasRef = ref()
 const rendererCtl = reactive({
@@ -266,7 +317,8 @@ const { renderer, cut } = useRenderer()
 const { scene, changeSceneBg } = useScene()
 const { camera, controls } = useCamera(renderer)
 const { material, setMaterial, setMaterialColor } = useMaterial(scene)
-const { light, ambientLight } = useLight()
+const { light, lightHelper, setPostiont, setSkyColor, setGroundColor } =
+    useLight(scene)
 const { texture, loadTexture, setAngle } = useTexture({ scene })
 const { loadModel, deleteModel } = useModels(scene)
 const {
@@ -278,6 +330,7 @@ const {
     changeOffset,
     changeRep,
 } = useImageLoad(scene)
+scene.add(lightHelper)
 scene.add(light)
 
 loadModel()
