@@ -132,36 +132,58 @@
                     </div>
                 </a-collapse-panel>
                 <a-collapse-panel key="6" header=" Image Upload ">
-                    <a-button @click="loadUploadModel">获取模型 </a-button>
                     <div>
-                        贴图：
-                        <a-button
-                            @click="getMaterial(item)"
-                            v-for="item in uploadData"
-                            :key="item"
-                        >
-                            {{ item?.value }}
-                        </a-button>
+                        <a-button @click="loadUploadModel">获取模型 </a-button>
                     </div>
+                    <br />
+                    <a-row>
+                        <a-col :span="24">贴图：</a-col>
+                        <a-col :span="6" v-for="item in uploadData" :key="item">
+                            <a-button @click="getMaterial(item)">
+                                {{ item?.value }}
+                            </a-button>
+                        </a-col>
+                    </a-row>
+                    <br />
                     <div>
                         logo贴图：
                         <a-button @click="logoTexture"> logo </a-button>
+                        <a-row>
+                            <!-- <a-col :span="24"> offset-x: </a-col>
+                            <a-col :span="24">
+                                <a-slider
+                                    :min="0"
+                                    :max="100"
+                                    :step="1"
+                                    @change="r => changeOffset(r, 'x')"
+                                />
+                            </a-col>
+                            <a-col :span="24"> offset-y: </a-col>
+                            <a-col :span="24">
+                                <a-slider
+                                    :min="0"
+                                    :max="100"
+                                    :step="1"
+                                    @change="r => changeOffset(r, 'y')"
+                                />
+                            </a-col> -->
+                            <a-col :span="24"> repeat: </a-col>
+                            <a-col :span="24">
+                                <a-slider
+                                    :min="0"
+                                    :max="100"
+                                    :step="1"
+                                    @change="r => changeRep(r)"
+                                />
+                            </a-col>
+                        </a-row>
                     </div>
+                    <br />
                     <div>
                         背景色：
                         <input
                             type="color"
                             @change="r => changeBG(r.target?.value)"
-                        />
-                    </div>
-
-                    <div>
-                        rp
-                        <a-slider
-                            :min="0"
-                            :max="100"
-                            :step="1"
-                            @change="r => setRepeat(r)"
                         />
                     </div>
                 </a-collapse-panel>
@@ -247,8 +269,15 @@ const { material, setMaterial, setMaterialColor } = useMaterial(scene)
 const { light, ambientLight } = useLight()
 const { texture, loadTexture, setAngle } = useTexture({ scene })
 const { loadModel, deleteModel } = useModels(scene)
-const { loadUploadModel, getMaterial, setRepeat, changeBG, logoTexture } =
-    useImageLoad(scene)
+const {
+    loadUploadModel,
+    getMaterial,
+    setRepeat,
+    changeBG,
+    logoTexture,
+    changeOffset,
+    changeRep,
+} = useImageLoad(scene)
 scene.add(light)
 
 loadModel()

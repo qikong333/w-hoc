@@ -136,20 +136,16 @@ export const uploadData = [
         value: '左袖',
         map: 'src/threejs/assets/imageUpload/zuo.png',
     },
-
     {
         name: 'BODY-SL_FRONT_1775',
         value: '右袖',
         map: 'src/threejs/assets/imageUpload/you.png',
     },
-
-    ,
     {
         name: 'BODY-F_FRONT_1744',
         value: '前幅',
         map: 'src/threejs/assets/imageUpload/qian.png',
     },
-    ,
     {
         name: 'BODY-B_FRONT_1753',
         value: '后幅',

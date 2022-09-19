@@ -47,6 +47,7 @@ export default function (scene: THREE.Scene) {
         bg.wrapS = THREE.RepeatWrapping
         bg.wrapT = THREE.RepeatWrapping
         bg.encoding = THREE.sRGBEncoding
+        bg.repeat.set(12, 12)
         loader.load(
             'src/threejs/models/upload.glb',
             object => {
@@ -171,6 +172,7 @@ export default function (scene: THREE.Scene) {
             // aoMapIntensity: 0.8,
             // alphaToCoverage: true,
             // alphaMap: Mei.height,
+            name: item.name,
             map,
             // color: new THREE.Color('#649812'),
             // aoMap,
@@ -260,6 +262,7 @@ export default function (scene: THREE.Scene) {
             map: logo,
             // normalMap,
             transparent: true,
+            name: 'BODY-F_FRONT_1744',
 
             color: new THREE.Color('#ccc'),
         })
@@ -284,7 +287,41 @@ export default function (scene: THREE.Scene) {
         })
     }
 
+    function changeOffset(v: number, t: string) {
+        console.log(v)
+
+        const m = scene.getObjectByName('434')
+        m.traverse(obj => {
+            console.log(obj)
+
+            if (obj.type === 'Mesh') {
+                if (obj.material?.name === 'BODY-F_FRONT_1744') {
+                    obj.material.map.offset[t] = v
+                    // obj.material.map.repeat = new THREE.Vector2(v, v)
+                    // console.log(obj)
+                }
+            }
+        })
+    }
+
+    function changeRep(v: number) {
+        console.log(v)
+
+        const m = scene.getObjectByName('434')
+        m.traverse(obj => {
+            console.log(obj)
+
+            if (obj.type === 'Mesh') {
+                if (obj.material?.name === 'BODY-F_FRONT_1744') {
+                    obj.material.map.repeat = new THREE.Vector2(v, v)
+                }
+            }
+        })
+    }
+
     return {
+        changeRep,
+        changeOffset,
         loadUploadModel,
         getMaterial,
         setRepeat,
