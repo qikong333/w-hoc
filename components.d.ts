@@ -8,7 +8,6 @@ declare module 'vue' {
     ACol: typeof import('ant-design-vue/es')['Col']
     ACollapse: typeof import('ant-design-vue/es')['Collapse']
     ACollapsePanel: typeof import('ant-design-vue/es')['CollapsePanel']
-    AInputNumber: typeof import('ant-design-vue/es')['InputNumber']
     ARow: typeof import('ant-design-vue/es')['Row']
     ASelect: typeof import('ant-design-vue/es')['Select']
     ASelectOption: typeof import('ant-design-vue/es')['SelectOption']

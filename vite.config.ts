@@ -20,6 +20,8 @@ export default ({ mode }) => {
     console.log(env)
 
     return defineConfig({
+        // 这里对应 nginx 中的 location
+        base: '/',
         css: {
             preprocessorOptions: {
                 less: {

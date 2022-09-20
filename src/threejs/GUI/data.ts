@@ -74,28 +74,28 @@ export const modelData = [
         name: 434,
         model: {
             img: new URL('../assets/434/model/base.png', import.meta.url).href,
-            glb: 'src/threejs/assets/434/model/base.glb',
+            glb: 'src/assets/434/model/base.glb',
         },
         maps: [
             {
                 name: new URL('../assets/434/maps/1/img.jpeg', import.meta.url)
                     .href,
-                url: 'src/threejs/assets/434/maps/1/basecolor.webp',
+                url: 'src/assets/434/maps/1/basecolor.webp',
             },
             {
                 name: new URL('../assets/434/maps/2/img.jpeg', import.meta.url)
                     .href,
-                url: 'src/threejs/assets/434/maps/2/basecolor.webp',
+                url: 'src/assets/434/maps/2/basecolor.webp',
             },
             {
                 name: new URL('../assets/434/maps/3/img.jpeg', import.meta.url)
                     .href,
-                url: 'src/threejs/assets/434/maps/3/basecolor.webp',
+                url: 'src/assets/434/maps/3/basecolor.webp',
             },
             {
                 name: new URL('../assets/434/maps/4/img.jpeg', import.meta.url)
                     .href,
-                url: 'src/threejs/assets/434/maps/4/basecolor.webp',
+                url: 'src/assets/434/maps/4/basecolor.webp',
             },
         ],
     },
@@ -103,28 +103,28 @@ export const modelData = [
         name: 435,
         model: {
             img: new URL('../assets/435/model/base.png', import.meta.url).href,
-            glb: 'src/threejs/assets/435/model/base.glb',
+            glb: 'src/assets/435/model/base.glb',
         },
         maps: [
             {
                 name: new URL('../assets/435/maps/1/img.jpeg', import.meta.url)
                     .href,
-                url: 'src/threejs/assets/435/maps/1/basecolor.webp',
+                url: 'src/assets/435/maps/1/basecolor.webp',
             },
             {
                 name: new URL('../assets/435/maps/2/img.jpeg', import.meta.url)
                     .href,
-                url: 'src/threejs/assets/435/maps/2/basecolor.webp',
+                url: 'src/assets/435/maps/2/basecolor.webp',
             },
             {
                 name: new URL('../assets/435/maps/3/img.jpeg', import.meta.url)
                     .href,
-                url: 'src/threejs/assets/435/maps/3/basecolor.webp',
+                url: 'src/assets/435/maps/3/basecolor.webp',
             },
             {
                 name: new URL('../assets/435/maps/4/img.jpeg', import.meta.url)
                     .href,
-                url: 'src/threejs/assets/435/maps/4/basecolor.webp',
+                url: 'src/assets/435/maps/4/basecolor.webp',
             },
         ],
     },
@@ -134,22 +134,22 @@ export const uploadData = [
     {
         name: 'BODY-SR_FRONT_1784',
         value: '左袖',
-        map: 'src/threejs/assets/imageUpload/zuo.png',
+        map: 'src/assets/imageUpload/zuo.png',
     },
     {
         name: 'BODY-SL_FRONT_1775',
         value: '右袖',
-        map: 'src/threejs/assets/imageUpload/you.png',
+        map: 'src/assets/imageUpload/you.png',
     },
     {
         name: 'BODY-F_FRONT_1744',
         value: '前幅',
-        map: 'src/threejs/assets/imageUpload/qian.png',
+        map: 'src/assets/imageUpload/qian.png',
     },
     {
         name: 'BODY-B_FRONT_1753',
         value: '后幅',
-        map: 'src/threejs/assets/imageUpload/hou.png',
+        map: 'src/assets/imageUpload/hou.png',
     },
     // {
     //     name: 'RIB-COLLAR_FRONT_1805',

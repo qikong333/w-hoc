@@ -2,7 +2,8 @@ const baseRouter = [
     {
         path: '/',
         name: '页面1标题',
-        component: () => import('@/view/template/index'),
+        // component: () => import('@/view/template/index'),
+        component: () => import('@/threejs/GUI/index.vue'),
         meta: {
             title: '',
         },

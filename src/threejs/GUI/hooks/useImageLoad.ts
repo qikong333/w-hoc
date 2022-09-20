@@ -25,7 +25,7 @@ const bgC = [
     'RIB-SR_FRONT_1799',
 ]
 
-const normalMap = texture.load('src/threejs/assets/imageUpload/normalMap.webp')
+const normalMap = texture.load('src/assets/imageUpload/normalMap.webp')
 normalMap.flipY = false
 normalMap.wrapS = THREE.RepeatWrapping
 normalMap.wrapT = THREE.RepeatWrapping
@@ -42,7 +42,7 @@ export default function (scene: THREE.Scene) {
     function loadUploadModel() {
         deleteModel()
         const loader = new GLTFLoader()
-        const bg = texture.load('src/threejs/assets/imageUpload/bg.jpeg')
+        const bg = texture.load('src/assets/imageUpload/bg.jpeg')
         bg.flipY = false
         bg.wrapS = THREE.RepeatWrapping
         bg.wrapT = THREE.RepeatWrapping
@@ -78,11 +78,9 @@ export default function (scene: THREE.Scene) {
     }
 
     function getMap() {
-        const normalMap = texture.load(
-            'src/threejs/assets/imageUpload/aoMap.webp'
-        )
+        const normalMap = texture.load('src/assets/imageUpload/aoMap.webp')
         normalMap.repeat.set(40, 40)
-        const aoMap = texture.load('src/threejs/assets/imageUpload/aoMap.webp')
+        const aoMap = texture.load('src/assets/imageUpload/aoMap.webp')
         const arr = [aoMap, normalMap]
         arr.map(r => {
             r.flipY = false
@@ -149,13 +147,11 @@ export default function (scene: THREE.Scene) {
         map.encoding = THREE.sRGBEncoding
         // map.repeat.set(15, 15)
 
-        const aoMap = texture.load('src/threejs/assets/imageUpload/aoMap.jpg')
+        const aoMap = texture.load('src/assets/imageUpload/aoMap.jpg')
 
-        const bumpMap = texture.load(
-            'src/threejs/assets/imageUpload/heightMap.png'
-        )
+        const bumpMap = texture.load('src/assets/imageUpload/heightMap.png')
         const roughnessMap = texture.load(
-            'src/threejs/assets/imageUpload/roughnessMap.jpg'
+            'src/assets/imageUpload/roughnessMap.jpg'
         )
         const arr = [aoMap, bumpMap, roughnessMap]
         arr.map(r => {
@@ -251,20 +247,24 @@ export default function (scene: THREE.Scene) {
     }
 
     function logoTexture() {
-        const logo = texture.load('src/threejs/assets/imageUpload/logo.png')
+        const logo = texture.load('src/assets/imageUpload/logo.png')
         logo.flipY = false
         logo.wrapS = 0
         logo.wrapT = 0
 
         logo.encoding = THREE.sRGBEncoding
         const m = scene.getObjectByName('434')
-        const mt = new THREE.MeshPhongMaterial({
+        const mt = new THREE.MeshStandardMaterial({
             map: logo,
             // normalMap,
             transparent: true,
             name: 'BODY-F_FRONT_1744',
-
-            color: new THREE.Color('#ccc'),
+            depthTest: false,
+            depthWrite: true,
+            // vertexColors: true,
+            color: new THREE.Color('#fff'),
+            // fog: true,
+            // alphaMap: logo,
         })
         mt.onBeforeCompile = function (shader) {
             var custom_map_fragment = THREE.ShaderChunk.map_fragment.replace(

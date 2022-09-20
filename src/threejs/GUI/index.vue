@@ -212,10 +212,11 @@
                                     @change="r => changeOffset(r, 'y')"
                                 />
                             </a-col> -->
+                            <br />
                             <a-col :span="24"> repeat: </a-col>
                             <a-col :span="24">
                                 <a-slider
-                                    :min="0"
+                                    :min="1"
                                     :max="100"
                                     :step="1"
                                     @change="r => changeRep(r)"
