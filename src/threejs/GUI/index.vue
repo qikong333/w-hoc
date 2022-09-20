@@ -5,7 +5,7 @@
             <div class="canvas" ref="canvasRef"></div>
         </a-col>
         <a-col :span="6">
-            <a-collapse v-model:activeKey="activeKey" accordion>
+            <a-collapse v-model:activeKey="activeKey">
                 <a-collapse-panel key="1" header="场景">
                     <a-row>
                         <a-col :span="4">背景：</a-col>

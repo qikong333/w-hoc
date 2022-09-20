@@ -25,7 +25,9 @@ const bgC = [
     'RIB-SR_FRONT_1799',
 ]
 
-const normalMap = texture.load('src/assets/imageUpload/normalMap.webp')
+const normalMap = texture.load(
+    import.meta.env.VITE_APP_WEB_IMAGEURL + 'imageUpload/normalMap.webp'
+)
 normalMap.flipY = false
 normalMap.wrapS = THREE.RepeatWrapping
 normalMap.wrapT = THREE.RepeatWrapping
@@ -42,14 +44,16 @@ export default function (scene: THREE.Scene) {
     function loadUploadModel() {
         deleteModel()
         const loader = new GLTFLoader()
-        const bg = texture.load('src/assets/imageUpload/bg.jpeg')
+        const bg = texture.load(
+            import.meta.env.VITE_APP_WEB_IMAGEURL + 'imageUpload/bg.jpeg'
+        )
         bg.flipY = false
         bg.wrapS = THREE.RepeatWrapping
         bg.wrapT = THREE.RepeatWrapping
         bg.encoding = THREE.sRGBEncoding
         bg.repeat.set(12, 12)
         loader.load(
-            'src/threejs/models/upload.glb',
+            import.meta.env.VITE_APP_WEB_IMAGEURL + 'imageUpload/upload.glb',
             object => {
                 object.scene.traverse(obj => {
                     if (obj.type === 'Mesh') {
@@ -78,9 +82,13 @@ export default function (scene: THREE.Scene) {
     }
 
     function getMap() {
-        const normalMap = texture.load('src/assets/imageUpload/aoMap.webp')
+        const normalMap = texture.load(
+            import.meta.env.VITE_APP_WEB_IMAGEURL + 'imageUpload/aoMap.webp'
+        )
         normalMap.repeat.set(40, 40)
-        const aoMap = texture.load('src/assets/imageUpload/aoMap.webp')
+        const aoMap = texture.load(
+            import.meta.env.VITE_APP_WEB_IMAGEURL + 'imageUpload/aoMap.webp'
+        )
         const arr = [aoMap, normalMap]
         arr.map(r => {
             r.flipY = false
@@ -147,11 +155,16 @@ export default function (scene: THREE.Scene) {
         map.encoding = THREE.sRGBEncoding
         // map.repeat.set(15, 15)
 
-        const aoMap = texture.load('src/assets/imageUpload/aoMap.jpg')
+        const aoMap = texture.load(
+            import.meta.env.VITE_APP_WEB_IMAGEURL + 'imageUpload/aoMap.jpg'
+        )
 
-        const bumpMap = texture.load('src/assets/imageUpload/heightMap.png')
+        const bumpMap = texture.load(
+            import.meta.env.VITE_APP_WEB_IMAGEURL + 'imageUpload/heightMap.png'
+        )
         const roughnessMap = texture.load(
-            'src/assets/imageUpload/roughnessMap.jpg'
+            import.meta.env.VITE_APP_WEB_IMAGEURL +
+                'imageUpload/roughnessMap.jpg'
         )
         const arr = [aoMap, bumpMap, roughnessMap]
         arr.map(r => {
@@ -247,7 +260,9 @@ export default function (scene: THREE.Scene) {
     }
 
     function logoTexture() {
-        const logo = texture.load('src/assets/imageUpload/logo.png')
+        const logo = texture.load(
+            import.meta.env.VITE_APP_WEB_IMAGEURL + 'imageUpload/logo.png'
+        )
         logo.flipY = false
         logo.wrapS = 0
         logo.wrapT = 0

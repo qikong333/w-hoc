@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build:dev": "npm run lint:code && vite build --mode development",
-        "build:pro": " vite build --mode production",
+        "build:pro": " vite build --mode production --base=/arbalest/",
         "build": "vite build",
         "serve": "vite preview",
         "lint:code": "eslint --fix src/**/*.{js,ts,tsx,vue}",
@@ -12,7 +12,7 @@
         "commit": "git-cz",
         "postinstall": "husky install"
     },
-    "dependencies": { 
+    "dependencies": {
         "@amap/amap-jsapi-loader": "^1.0.1",
         "@amap/amap-jsapi-types": "^0.0.8",
         "@types/geojson": "^7946.0.8",
@@ -22,7 +22,7 @@
         "@types/qs": "^6.9.7",
         "@types/three": "^0.141.0",
         "@zougt/vite-plugin-theme-preprocessor": "^1.4.4",
-        "ant-design-vue": "^3.2.7",
+        "ant-design-vue": "^3.2.12",
         "axios": "^0.24.0",
         "clipboard": "^2.0.8",
         "compression-webpack-plugin": "^9.0.1",
