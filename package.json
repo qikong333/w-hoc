@@ -4,6 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build:dev": "npm run lint:code && vite build --mode development",
+        "build:kn": " vite build --mode kn --base=/arbalest/",
         "build:pro": " vite build --mode production --base=/arbalest/",
         "build": "vite build",
         "serve": "vite preview",

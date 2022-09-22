@@ -5,13 +5,12 @@
             <div class="canvas" ref="canvasRef"></div>
         </a-col>
         <a-col :span="6">
-            <a-collapse v-model:activeKey="activeKey">
+            <a-collapse v-model:activeKey="activeKey" accordion>
                 <a-collapse-panel key="1" header="场景">
                     <a-row>
                         <a-col :span="4">背景：</a-col>
                         <a-col :span="18">
                             <a-select
-                                ref="select"
                                 style="width: 120px"
                                 v-model:value="sceneCtl.selectValue"
                             >
@@ -60,7 +59,7 @@
                         </a-col>
                         <a-col :span="24">position</a-col>
                         <a-col :span="4">x:</a-col>
-                        <a-col :span="20">
+                        <a-col :span="16">
                             <a-slider
                                 v-model:value="position.x"
                                 :min="-10"
@@ -69,8 +68,16 @@
                                 @change="r => setPostiont(r, 'x')"
                             />
                         </a-col>
+                        <a-col :span="4">
+                            <a-input-number
+                                v-model:value="position.x"
+                                :min="-10"
+                                :max="10"
+                                style="margin-left: 16px"
+                            />
+                        </a-col>
                         <a-col :span="4">y:</a-col>
-                        <a-col :span="20">
+                        <a-col :span="16">
                             <a-slider
                                 v-model:value="position.y"
                                 :min="-10"
@@ -78,8 +85,16 @@
                                 :step="0.01"
                                 @change="r => setPostiont(r, 'y')"
                         /></a-col>
+                        <a-col :span="4">
+                            <a-input-number
+                                v-model:value="position.y"
+                                :min="-10"
+                                :max="10"
+                                style="margin-left: 16px"
+                            />
+                        </a-col>
                         <a-col :span="4">z:</a-col>
-                        <a-col :span="20">
+                        <a-col :span="16">
                             <a-slider
                                 v-model:value="position.z"
                                 :min="-10"
@@ -87,6 +102,14 @@
                                 :step="0.01"
                                 @change="r => setPostiont(r, 'z')"
                         /></a-col>
+                        <a-col :span="4">
+                            <a-input-number
+                                v-model:value="position.z"
+                                :min="-10"
+                                :max="10"
+                                style="margin-left: 16px"
+                            />
+                        </a-col>
                     </a-row>
                 </a-collapse-panel>
                 <a-collapse-panel key="3" header="模型">
@@ -192,7 +215,8 @@
                     <br />
                     <div>
                         logo贴图：
-                        <a-button @click="logoTexture"> logo </a-button>
+                        <a-button @click="logoTexture(1)"> logo </a-button>
+                        <a-button @click="logoTexture(2)"> logo2 </a-button>
                         <a-row>
                             <!-- <a-col :span="24"> offset-x: </a-col>
                             <a-col :span="24">
@@ -226,7 +250,7 @@
                     </div>
                     <br />
                     <div>
-                        背景色：
+                        衣领色：
                         <input
                             type="color"
                             @change="r => changeBG(r.target?.value)"
@@ -331,7 +355,7 @@ const {
     changeOffset,
     changeRep,
 } = useImageLoad(scene)
-scene.add(lightHelper)
+// scene.add(lightHelper)
 scene.add(light)
 
 loadModel()

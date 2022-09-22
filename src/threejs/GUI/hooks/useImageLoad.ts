@@ -51,7 +51,7 @@ export default function (scene: THREE.Scene) {
         bg.wrapS = THREE.RepeatWrapping
         bg.wrapT = THREE.RepeatWrapping
         bg.encoding = THREE.sRGBEncoding
-        bg.repeat.set(12, 12)
+        bg.repeat.set(15, 15)
         loader.load(
             import.meta.env.VITE_APP_WEB_IMAGEURL + 'imageUpload/upload.glb',
             object => {
@@ -259,9 +259,10 @@ export default function (scene: THREE.Scene) {
         })
     }
 
-    function logoTexture() {
+    function logoTexture(n: number) {
         const logo = texture.load(
-            import.meta.env.VITE_APP_WEB_IMAGEURL + 'imageUpload/logo.png'
+            import.meta.env.VITE_APP_WEB_IMAGEURL +
+                (n === 1 ? 'imageUpload/logo.png' : 'imageUpload/logo2.png')
         )
         logo.flipY = false
         logo.wrapS = 0
@@ -271,11 +272,11 @@ export default function (scene: THREE.Scene) {
         const m = scene.getObjectByName('434')
         const mt = new THREE.MeshStandardMaterial({
             map: logo,
-            // normalMap,
+            normalMap,
             transparent: true,
             name: 'BODY-F_FRONT_1744',
-            depthTest: false,
-            depthWrite: true,
+            // depthTest: false,
+            // depthWrite: true,
             // vertexColors: true,
             color: new THREE.Color('#fff'),
             // fog: true,

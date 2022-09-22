@@ -1,5 +1,5 @@
 VITE_ENV=production
   
 VITE_APP_WEB_URL=http://www.hero-w.com/threejs/
-VITE_APP_WEB_IMAGEURL=/threejs/
+VITE_APP_WEB_IMAGEURL=/arbalest/threejs/
 VITE_APP_UPLOAD_URL=1111
