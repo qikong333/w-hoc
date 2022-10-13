@@ -65,41 +65,41 @@ export default defineComponent({
 
         const formRef = ref<any>(null)
 
-        // const config: TablePageIutput = reactive({
-        //     config: FormItems,
-        //     form: {},
-        //     table: {
-        //         rowKey: 'id',
-        //         tableData: tableData,
-        //     },
-        //     api: {
-        //         load: async () => {
-        //             console.log('load')
-        //             return tableData
-        //         },
-        //         add: async () => {
-        //             console.log('add')
-        //         },
-        //         edit: async () => {
-        //             console.log('edit')
-        //         },
-        //         delete: async () => {
-        //             console.log('delete')
-        //         },
-        //         view: async () => {
-        //             console.log('view')
-        //         },
-        //         search: async () => {
-        //             console.log('search')
-        //         },
-        //         exportExcel: async () => {
-        //             console.log('exportExcel')
-        //         },
-        //         batchDeletion: async () => {
-        //             console.log('batchDeletion')
-        //         },
-        //     },
-        // })
+        const config = reactive({
+            config: FormItems,
+            form: {},
+            table: {
+                rowKey: 'id',
+                tableData: tableData,
+            },
+            api: {
+                load: async () => {
+                    console.log('load')
+                    return tableData
+                },
+                add: async () => {
+                    console.log('add')
+                },
+                edit: async () => {
+                    console.log('edit')
+                },
+                delete: async () => {
+                    console.log('delete')
+                },
+                view: async () => {
+                    console.log('view')
+                },
+                search: async () => {
+                    console.log('search')
+                },
+                exportExcel: async () => {
+                    console.log('exportExcel')
+                },
+                batchDeletion: async () => {
+                    console.log('batchDeletion')
+                },
+            },
+        })
         const a = ref('')
 
         const tablePage = ref<TablePageOutput | null>(null)
@@ -116,6 +116,10 @@ export default defineComponent({
                 <div>
                     <YwMune />
                 </div>
+                <br />
+                <br />
+                <br />
+                <br />
                 <div>
                     <YwForm
                         ref={formRef}
@@ -126,17 +130,24 @@ export default defineComponent({
                         }}
                     />
                 </div>
-
                 {/* <YwTable
                     v-slots={{
                         action: '1111',
                     }}
                 /> */}
-
                 {/* <Button onClick={sub}>提交</Button> */}
                 {/* <SvgIcon name="iconjingweidu" size="50" color="red" /> */}
+                <a-divider />
+                <br />
+                <br />
+                <br />
+                <br />
 
-                {/* <div>
+                <div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                     <YwTablePage
                         ref={tablePage}
                         {...config}
@@ -150,13 +161,20 @@ export default defineComponent({
                         }
                     />
                 </div>
+                <br />
+                <br />
+                <br />
+                <br />
                 <div>
                     <YwFormStep formItems={Ctl.formItems2} />
                 </div>
-
+                <br />
+                <br />
+                <br />
+                <br />
                 <div>
                     <YwTree />
-                </div> */}
+                </div>
             </div>
         )
     },
