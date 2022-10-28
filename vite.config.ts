@@ -6,18 +6,14 @@ import WindiCSS from 'vite-plugin-windicss'
 import { resolve } from 'path'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
-// import { VitePWA } from 'vite-plugin-pwa'
-// const CompressionWebpackPlugin = require('compression-webpack-plugin')
-import themePreprocessorPlugin from '@zougt/vite-plugin-theme-preprocessor'
+// import themePreprocessorPlugin from '@zougt/vite-plugin-theme-preprocessor'
 import path from 'path'
 
-// const resolve = (dir: string) => path.join(__dirname, dir)
 
 // https://vitejs.dev/config/
 
 export default ({ mode }) => {
     const env = loadEnv(mode, process.cwd())
-    console.log(env)
 
     return defineConfig({
         // 这里对应 nginx 中的 location
@@ -32,8 +28,8 @@ export default ({ mode }) => {
         },
         plugins: [
             vue(),
-            themePreprocessorPlugin({
-                less: {
+            // themePreprocessorPlugin({
+            //     less: {
                     // 主题代码
                     // multipleScopeVars: [
                     //     {
@@ -45,18 +41,11 @@ export default ({ mode }) => {
                     //         path: path.resolve('src/theme/green.less'),
                     //     },
                     // ],
-                },
-            }),
+            //     },
+            // }),
             WindiCSS(),
             vueJsx({}),
-            // // add PWA
-            // VitePWA({
-            //   manifest: {},
-            //   workbox: {
-            //     skipWaiting: true,
-            //     clientsClaim: true,
-            //   },
-            // }),
+          
 
             // 按需加载antd组件
             Components({

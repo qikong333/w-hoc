@@ -17,7 +17,6 @@ import { Button } from 'ant-design-vue'
 import YwTree from '@/components/tree/YwTree'
 import { TablePageOutput } from '@/hoc/tablePage/YwTablePage/types/tablePageOutput'
 import { TablePageIutput } from '@/hoc/tablePage/YwTablePage/types/tablePagInput '
-import getConfig from '@/utils/common/getConfig'
 import YwMune from '@/components/YwMune'
 
 export default defineComponent({
@@ -27,7 +26,6 @@ export default defineComponent({
         YwMune,
     },
     setup(props) {
-        console.log(getConfig().aa)
         // // get例子
         // useHttp({
         //     baseURL: 'http://192.168.0.80:8096/',

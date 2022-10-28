@@ -6,7 +6,7 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 - [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
-windicss中文文档链接：https://cn.windicss.org/utilities/colors.html
+windicss中文文档链接：https://cn.windicss.org/
 
 
 使用工作区的项目要引入antdv的样式 import 'ant-design-vue/dist/antd.css'
