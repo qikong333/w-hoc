@@ -75,14 +75,6 @@ export enum InputType {
      *  密码框
      */
     Password,
-    /**
-     *  地图（区域)
-     */
-    MapRange,
-    /**
-     *  地图（点）
-     */
-    MapPoint,
     /** 表格输入框 */
     TableInput,
     /** 上传图片 */

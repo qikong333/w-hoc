@@ -4,15 +4,22 @@ import qs from 'qs'
 
 interface Params {
     baseURL: string
-    timeout: number
+    timeout?: number
     headers: any
     reqValue: any
+    errorCode: { ture: number; function: Function }
 }
 
-const useHttp = ({ baseURL, timeout = 5000, headers, reqValue }: Params) => {
+const useHttp = ({
+    baseURL,
+    timeout = 5000,
+    headers,
+    reqValue,
+    errorCode,
+}: Params) => {
     const instance = axios.create({
         baseURL,
-        // process.env.NODE_ENV === 'production' ? process.env.VUE_APP_BASE_API : '/apis',
+        // import.meta.env.NODE_ENV === 'production' ? import.meta.env.VUE_APP_BASE_API : '/apis',
         timeout,
         headers,
         // 如果前端配置了这个withCredentials=true，后段设置Access-Control-Allow-Origin不能为 " * ",必须是你的源地址啊
@@ -33,15 +40,20 @@ const useHttp = ({ baseURL, timeout = 5000, headers, reqValue }: Params) => {
         (error: any) => {
             // 错误抛出，在具体业务代码中处理
             error.data = {}
-            error.data.message = '请求出错，请联系管理员！'
+
             return Promise.reject(error)
         }
     )
 
     instance.interceptors.response.use(
-        (response: AxiosResponse) => {
+        (response: any) => {
             console.log(response)
-
+            if (errorCode.ture) {
+                errorCode.function(response)
+                return response[reqValue]
+            } else {
+                errorCode.function(response)
+            }
             // const status: number = response.status
             // const message = ''
             // if(status<200 || status>= 300){
@@ -49,8 +61,6 @@ const useHttp = ({ baseURL, timeout = 5000, headers, reqValue }: Params) => {
             //   message =
             // }
             // 直接返回
-            const r = response[reqValue]
-            return r
         },
         (error: any) => {
             // 可以做一些处理，401，403，500 等等，直接统一处理，也可以抛出到业务代码中处理
@@ -97,10 +107,49 @@ const useHttp = ({ baseURL, timeout = 5000, headers, reqValue }: Params) => {
                 })
         })
     }
+
+    const del = (url: string, params = {}, body?: any, option = {}) => {
+        return new Promise((resolve, reject) => {
+            instance({
+                url,
+                method: 'delete',
+                params, // query参数 显式
+                data: body, // body参数 隐式
+                ...option,
+            })
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        })
+    }
+
+    const put = (url: string, params = {}, body?: any, option = {}) => {
+        return new Promise((resolve, reject) => {
+            instance({
+                url,
+                method: 'put',
+                params, // query参数 显式
+                data: body, // body参数 隐式
+                ...option,
+            })
+                .then(response => {
+                    resolve(response)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        })
+    }
+
     const request = instance
 
     return {
         get,
+        put,
+        del,
         post,
         request,
     }

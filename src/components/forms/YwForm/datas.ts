@@ -120,23 +120,6 @@ export const FormItems: FormItem[] = [
         },
     },
 
-    // {
-    //     defaultValue: [116.379028, 39.865042],
-    //     key: 'map1',
-    //     type: InputType.MapPoint,
-    //     label: '地图选点',
-    // },
-    // {
-    //     defaultValue: [
-    //         [116.379028, 39.865042],
-    //         [116.379028, 39.865042],
-    //         [116.379028, 39.865042],
-    //         [116.379028, 39.865042],
-    //     ],
-    //     key: 'map2',
-    //     type: InputType.MapRange,
-    //     label: '地图区域',
-    // },
     {
         key: 'img',
         type: InputType.Upload,

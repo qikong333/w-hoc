@@ -10,57 +10,22 @@ import {
     formItems2,
     tableData,
 } from '@/components/forms/YwForm/datas'
-// import './index.scss'
 import useHttp from '@/hook/useHttp'
 import YwFormStep from '@/components/forms/YwFormStep'
 import { Button } from 'ant-design-vue'
 import YwTree from '@/components/tree/YwTree'
 import { TablePageOutput } from '@/hoc/tablePage/YwTablePage/types/tablePageOutput'
 import { TablePageIutput } from '@/hoc/tablePage/YwTablePage/types/tablePagInput '
-import YwMune from '@/components/YwMune'
+import YwMenu from '@/components/YwMenu'
+import i18n from '@/lang'
 
 export default defineComponent({
     name: 'templatePage',
     components: {
         YwInput,
-        YwMune,
+        YwMenu,
     },
     setup(props) {
-        // // get例子
-        // useHttp({
-        //     baseURL: 'http://192.168.0.80:8096/',
-        //     timeout: 5000,
-        //     headers: {
-        //         'Content-Type': 'application/json;charset=UTF-8',
-        //     },
-        // })
-        //     .get('/rbac/role/index', {
-        //         token: 'PzyRSFbbwjFp55XZi0IW4O0Y4gGA4x-U_1641864668',
-        //         page: 1,
-        //         'per-page': 20,
-        //     })
-        //     .then(res => {
-        //         console.log(res)
-        //     })
-
-        // // post例子
-        // useHttp({
-        //     baseURL: 'http://192.168.0.80:8096/',
-        //     timeout: 5000,
-        //     headers: {
-        //         'Content-Type': 'application/json;charset=UTF-8',
-        //     },
-        // })
-        //     .post('/job/enableds', {
-        //         token: 'PzyRSFbbwjFp55XZi0IW4O0Y4gGA4x-U_1641864668',
-        //         ids: '12',
-        //     })
-        //     .then(res => {
-        //         console.log(res)
-        //     })
-
-        // import.meta.env.VITE_APP_WEB_URL
-
         const formRef = ref<any>(null)
 
         const config = reactive({
@@ -108,11 +73,11 @@ export default defineComponent({
                 console.log(tablePage?.value?.getPage())
             },
         })
-
         return () => (
             <div>
+                {i18n.global.t('xx')}
                 <div>
-                    <YwMune />
+                    <YwMenu />
                 </div>
                 <br />
                 <br />

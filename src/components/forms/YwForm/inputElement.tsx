@@ -9,8 +9,6 @@ import YwTimePicker from '../YwTimePicker'
 import YwInputNumber from '../YwInputNumber'
 import { FormItem } from '../types/formItem'
 import { InputType } from './types/inputType'
-import YwMapPoint from '../YwMapPoint'
-import MapRange from '../YwMapRange'
 import YwTableInput from '../YwTableInput/index'
 import { Form } from 'ant-design-vue'
 import YwUpload from '../YwUpload'
@@ -119,28 +117,6 @@ const inputElement = (formItem: FormItem, form: any, emit: Function) => {
         case InputType.TimePicker:
             el = (
                 <YwTimePicker
-                    item={formItem}
-                    v-model:value={form[formItem.key]}
-                    onChange={() => changForm(formItem, form, emit)}
-                />
-            )
-            break
-
-        case InputType.MapPoint:
-            el = (
-                <FormItemRestNode>
-                    <YwMapPoint
-                        item={formItem}
-                        v-model:value={form[formItem.key]}
-                        onChange={() => changForm(formItem, form, emit)}
-                    />
-                </FormItemRestNode>
-            )
-            break
-
-        case InputType.MapRange:
-            el = (
-                <MapRange
                     item={formItem}
                     v-model:value={form[formItem.key]}
                     onChange={() => changForm(formItem, form, emit)}

@@ -23,6 +23,26 @@ export default defineComponent({
             selectedKeys: ['1'],
             openKeys: ['sub1'],
             preOpenKeys: ['sub1'],
+            isDown2(item: MenuItemType) {
+                const menuItem = (item: MenuItemType) => (
+                    <MenuItem key={item.name}> {item.meta.title} </MenuItem>
+                )
+
+                const subMenu = (item: MenuItemType) => (
+                    <SubMenu
+                        key={item.name}
+                        v-slots={{
+                            title: () => item.meta.title,
+                        }}
+                    >
+                        {item.children.map(child => (
+                            <MenuItem key={child.name}>
+                                {child.meta.title}
+                            </MenuItem>
+                        ))}
+                    </SubMenu>
+                )
+            },
             isDown(item: MenuItemType) {
                 let el = <></>
                 if (item.children) {
@@ -42,11 +62,11 @@ export default defineComponent({
                                     title: () => item.meta.title,
                                 }}
                             >
-                                {item.children.map(child => (
-                                    <MenuItem key={child.name}>
+                                {item.children.map(child => {
+                                    ;<MenuItem key={child.name}>
                                         {child.meta.title}
                                     </MenuItem>
-                                ))}
+                                })}
                             </SubMenu>
                         )
                     }
