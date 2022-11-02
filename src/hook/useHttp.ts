@@ -90,7 +90,7 @@ const useHttp = ({
             })
             .finally()
     }
-    const post = (url: string, params = {}, body?: any, option = {}) => {
+    const post = (url: string, body: any, params = {}, option = {}) => {
         return new Promise((resolve, reject) => {
             instance({
                 url,
@@ -126,7 +126,7 @@ const useHttp = ({
         })
     }
 
-    const put = (url: string, params = {}, body?: any, option = {}) => {
+    const put = (url: string, body?: any, params = {}, option = {}) => {
         return new Promise((resolve, reject) => {
             instance({
                 url,

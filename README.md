@@ -8,8 +8,9 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 
 windicss中文文档链接：https://cn.windicss.org/
 
-
 使用工作区的项目要引入antdv的样式 import 'ant-design-vue/dist/antd.css'
+
+# 项目结构
 
 ├── App.vue     // 入口
 ├── assets
@@ -138,6 +139,15 @@ windicss中文文档链接：https://cn.windicss.org/
 │   │   └── mitt.ts
 │   └── index.ts
 └── view    // 页面
-    ├── login
-    └── template
-        └── index.tsx
+├── login
+└── template
+└── index.tsx
+
+# 代码格式化
+
+统一使用Prettier，插件地址：https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+
+
+# vue3 tsx的使用
+
+https://juejin.cn/post/7151950058501373989

@@ -17,14 +17,16 @@ export interface TablePageIutput {
     form: {}
     /**表格配置 */
     table?: TableInput
-    api: {
-        search?: apiType
-        load?: apiType
-        add?: apiType
-        edit?: apiType
-        delete?: apiType
-        view?: apiType
-        exportExcel?: apiType
-        batchDeletion?: apiType
-    }
+    api: inputApis
+}
+
+export interface inputApis {
+    search?: apiType
+    load?: apiType
+    add?: apiType
+    edit?: apiType
+    delete?: apiType
+    view?: apiType
+    exportExcel?: apiType
+    batchDeletion?: apiType
 }

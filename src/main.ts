@@ -4,7 +4,7 @@ import router from './router'
 import 'virtual:windi.css'
 import 'ant-design-vue/dist/antd.css'
 import { createPinia } from 'pinia'
-import i18n from './lang'
+import i18n from './i18n'
 
 const pinia = createPinia()
 const app = createApp(App as any)

@@ -25,9 +25,10 @@ const messages = {
 
 const i18n = createI18n({
     legacy: false,
-    locale: 'zh-CN', // set locale
+    locale: localStorage.getItem('lang') ?? 'en-US', // set locale
     messages, // set locale message
-    allowComposition: true, // you need to specify that!
+    allowComposition: true, // you need to specify that!,
+    globalInjection: true,
 })
 
 export default i18n

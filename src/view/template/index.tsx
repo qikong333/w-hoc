@@ -17,7 +17,8 @@ import YwTree from '@/components/tree/YwTree'
 import { TablePageOutput } from '@/hoc/tablePage/YwTablePage/types/tablePageOutput'
 import { TablePageIutput } from '@/hoc/tablePage/YwTablePage/types/tablePagInput '
 import YwMenu from '@/components/YwMenu'
-import i18n from '@/lang'
+import i18n from '@/i18n'
+import SelectLanguage from '@/components/selectLanguage'
 
 export default defineComponent({
     name: 'templatePage',
@@ -75,6 +76,7 @@ export default defineComponent({
         })
         return () => (
             <div>
+                <SelectLanguage />
                 {i18n.global.t('xx')}
                 <div>
                     <YwMenu />
