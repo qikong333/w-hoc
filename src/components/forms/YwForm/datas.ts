@@ -23,6 +23,23 @@ export const FormItems: FormItem[] = [
         key: 'sex',
         type: InputType.Select,
         label: '性别',
+        options: [
+            { value: 1, label: '男' },
+            { value: 2, label: '女' },
+        ],
+        rules: [
+            {
+                required: true,
+                message: 'Please select region',
+            },
+        ],
+    },
+    {
+        // headerHide: true,
+        defaultValue: [1, 2],
+        key: 'sex',
+        type: InputType.Select,
+        label: '性别',
         InputMode: 'multiple',
         options: [
             { value: 1, label: '男' },

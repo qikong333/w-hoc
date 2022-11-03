@@ -14,6 +14,14 @@ const language: Language = {
         cn: '添加',
         en: 'add',
     },
+    total: {
+        cn: '共 {m} 条',
+        en: '{m}',
+    },
+    pageSice: {
+        cn: '{m} 条/页',
+        en: '{m} / page',
+    },
 }
 
 export default language

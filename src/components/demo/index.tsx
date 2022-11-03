@@ -1,5 +1,5 @@
 import { defineComponent, reactive } from 'vue'
-import './index.scss'
+import s from './index.module.scss'
 import { XxxInput } from './types/input'
 import { XxxOutput } from './types/output'
 
@@ -12,10 +12,10 @@ const useDome = defineComponent({
         })
 
         // 组件返回的值
-        expose({ getXxx: () => Ctl.xxx })
+        expose({ a: 1, b: () => Ctl.xxx } as XxxOutput)
 
         // 返回html部分
-        return () => <div>asdfadf</div>
+        return () => <div class={s.bg}>asdfadf</div>
     },
 })
 

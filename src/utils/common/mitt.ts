@@ -18,3 +18,5 @@ bus.$off = emitter.off
 bus.$emit = emitter.emit
 
 export default bus
+
+// 组件之间的数据交互

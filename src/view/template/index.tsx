@@ -12,7 +12,7 @@ import {
 } from '@/components/forms/YwForm/datas'
 import useHttp from '@/hook/useHttp'
 import YwFormStep from '@/components/forms/YwFormStep'
-import { Button } from 'ant-design-vue'
+import { Button, Select } from 'ant-design-vue'
 import YwTree from '@/components/tree/YwTree'
 import { TablePageOutput } from '@/hoc/tablePage/YwTablePage/types/tablePageOutput'
 import { TablePageIutput } from '@/hoc/tablePage/YwTablePage/types/tablePagInput '
@@ -74,6 +74,7 @@ export default defineComponent({
                 console.log(tablePage?.value?.getPage())
             },
         })
+
         return () => (
             <div>
                 <SelectLanguage />
@@ -91,7 +92,7 @@ export default defineComponent({
                         config={{
                             labelCol: 8,
                             wrapperRol: 18,
-                            layout: 'inline',
+                            // layout: 'inline',
                         }}
                     />
                 </div>

@@ -2,7 +2,7 @@ import layout from '@/layout'
 
 const cmsRouter = [
     {
-        path: '/cms',
+        path: '/3d',
         name: 'DesignView',
         component: layout,
         meta: {
@@ -10,9 +10,33 @@ const cmsRouter = [
         },
         children: [
             {
-                path: '/',
-                name: '页面1标题',
-                component: () => import('@/view/template/index'),
+                path: '/Material',
+                name: 'Material',
+                // component: () => import('@/view/template/index'),
+                meta: {
+                    title: '',
+                },
+            },
+            {
+                path: '/Pattern',
+                name: 'Pattern',
+                // component: () => import('@/view/template/index'),
+                meta: {
+                    title: '',
+                },
+            },
+            {
+                path: '/Botton',
+                name: 'Botton',
+                // component: () => import('@/view/template/index'),
+                meta: {
+                    title: '',
+                },
+            },
+            {
+                path: '/Zipper',
+                name: 'Zipper',
+                // component: () => import('@/view/template/index'),
                 meta: {
                     title: '',
                 },

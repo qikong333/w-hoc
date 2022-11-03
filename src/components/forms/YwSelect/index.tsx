@@ -6,9 +6,7 @@ interface Props {
     value: string
     item: FormItem
 }
-
-// type F = keyof typeof form
-
+const SelectOption = Select.Option
 const YwSelect = defineComponent({
     name: 'YwSelect',
     emits: ['update:value', 'change'], // 必须写双向绑定
@@ -30,9 +28,22 @@ const YwSelect = defineComponent({
                     optionFilterProp="label"
                     placeholder={props.item?.placeholder}
                     v-model:value={Ctl._value}
-                    options={props.item?.options}
+                    // options={props.item?.options}
                     onChange={change}
-                />
+                >
+                    {props.item?.options &&
+                        (props.item?.options).map(r => {
+                            return (
+                                <SelectOption value={r.value}>
+                                    {r.label}
+                                    <img
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8KBZrLNcrWwsdEqDC72qO6OkbRF2_jh8sb-yhA9MtImZ7zIerU81H&usqp=CAE&s"
+                                        alt=""
+                                    />
+                                </SelectOption>
+                            )
+                        })}
+                </Select>
             ),
         })
 

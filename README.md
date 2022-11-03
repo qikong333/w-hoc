@@ -100,7 +100,7 @@ windicss中文文档链接：https://cn.windicss.org/
 │           ├── index.tsx
 │           └── types
 │               ├── action.ts
-│               ├── tablePagInput\ .ts
+│               ├── tablePagInput.ts
 │               └── tablePageOutput.ts
 ├── hook    // 抽象方法
 │   ├── index.ts

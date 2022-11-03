@@ -12,6 +12,7 @@ import { useRoute } from 'vue-router'
 import { TableInput } from './types/tableInput'
 import { TableOutput } from './types/tableOutput'
 import ActionType from '@/hoc/tablePage/YwTablePage/types/action'
+import $t from '@/i18n/$t'
 
 interface Slots {
     action: any
@@ -168,13 +169,15 @@ const YwTable = defineComponent({
                 ></Table>
                 {!props.noPage && (
                     <Pagination
-                        show-total={(total: any) => <span>共{total}条</span>}
+                        show-total={(total: any) => (
+                            <span>{$t('total', total)}</span>
+                        )}
                         v-model:current={Ctl.pageIndex}
                         v-model:pageSize={Ctl.pageSize}
                         {...pagination.value}
                         v-slots={{
                             buildOptionText: (e: any) => (
-                                <span>{e.value}条/页</span>
+                                <span> {$t('pageSice', e.value)}</span>
                             ),
                         }}
                     />

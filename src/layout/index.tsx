@@ -7,7 +7,13 @@ export default defineComponent({
         return () => (
             <>
                 <Header />
-                <router-view />
+                <a-row>
+                    <a-col span={6}>1231321</a-col>
+                    <a-col span={18}>
+                        <router-view />
+                    </a-col>
+                </a-row>
+
                 <Footer />
             </>
         )
