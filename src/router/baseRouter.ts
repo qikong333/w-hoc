@@ -1,3 +1,5 @@
+import layout from '@/layout'
+
 const baseRouter = [
     {
         path: '/',
@@ -9,8 +11,16 @@ const baseRouter = [
     },
     {
         path: '/login',
-        name: '登录',
+        name: 'login',
         component: () => import('@/view/login/index.vue'),
+        meta: {
+            title: '',
+        },
+    },
+    {
+        path: '/cms',
+        name: 'layout',
+        component: () => import('@/layout/index'),
         meta: {
             title: '',
         },

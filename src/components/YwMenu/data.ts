@@ -1,95 +1,72 @@
 const routerData = [
     {
-        path: '/portal',
-        name: 'portal',
+        path: '/3DModel',
+        name: '3DModel',
         // component: () => import('@/view/portal/index'),
         meta: {
-            title: '门户',
+            title: '3D Model',
             icon: 'icon-menhu',
         },
         children: [
             {
-                path: '/portal',
-                name: 'portal',
+                path: '/model',
+                name: 'model',
                 meta: {
-                    title: '门户',
+                    title: 'Models',
+                },
+            },
+            {
+                path: '/material',
+                name: 'material',
+                meta: {
+                    title: 'Materials',
+                },
+            },
+            {
+                path: '/pattern',
+                name: 'pattern',
+                meta: {
+                    title: 'Models',
+                },
+            },
+            {
+                path: '/button',
+                name: 'button',
+                meta: {
+                    title: 'Buttons',
+                },
+            },
+            {
+                path: '/zipper',
+                name: 'zipper',
+                meta: {
+                    title: 'Zippers',
                 },
             },
         ],
     },
+
     {
-        path: '/device',
-        name: 'device',
+        path: '/imageGallery',
+        name: 'imageGallery',
         meta: {
-            title: '消防设备管理',
-            icon: 'icon-xiaofangshebeiguanli',
-        },
-        children: [
-            {
-                path: '/device',
-                name: 'device',
-                meta: {
-                    title: '设备概览',
-                    icon: 'icongerenzhongxin',
-                },
-            },
-        ],
-    },
-    {
-        path: '/back',
-        name: 'back',
-        meta: {
-            title: '后台管理',
-            icon: 'icon-houtaiguanli',
-        },
-        children: [
-            {
-                path: '/resource',
-                name: 'resource',
-                meta: {
-                    title: '资源配置',
-                    icon: 'icon-ziyuanpeizhi',
-                },
-                children: [
-                    {
-                        path: '/tunnel',
-                        name: 'tunnel',
-                        meta: {
-                            title: '隧道',
-                        },
-                    },
-                    {
-                        path: '/streetcar',
-                        name: 'streetcar',
-                        meta: {
-                            title: '有轨电车',
-                        },
-                    },
-                ],
-            },
-            {
-                path: '/plan',
-                name: 'plan',
-                meta: {
-                    title: '预案配置',
-                    icon: 'icon-ziyuanpeizhi',
-                },
-            },
-        ],
-    },
-    {
-        path: '/monitor',
-        name: 'monitor',
-        meta: {
-            title: '监测可视化',
+            title: 'ImageGallery',
             icon: 'icon-jiancekeshihua',
         },
     },
     {
-        path: '/schedule',
-        name: 'schedule',
+        path: '/user',
+        name: 'user',
         meta: {
-            title: '指挥调度可视化',
+            title: 'User',
+            icon: 'icon-zhihuitiaodukeshihua',
+        },
+    },
+    {
+        path: '/order',
+        name: 'order',
+        meta: {
+            title: 'Order',
             icon: 'icon-zhihuitiaodukeshihua',
         },
     },

@@ -62,11 +62,11 @@ export default defineComponent({
                                     title: () => item.meta.title,
                                 }}
                             >
-                                {item.children.map(child => {
-                                    ;<MenuItem key={child.name}>
+                                {item.children.map(child => (
+                                    <MenuItem key={child.name}>
                                         {child.meta.title}
                                     </MenuItem>
-                                })}
+                                ))}
                             </SubMenu>
                         )
                     }
@@ -81,7 +81,11 @@ export default defineComponent({
 
         return () => (
             <>
-                <Menu mode="inline" inline-collapsed={state.collapsed}>
+                <Menu
+                    mode="inline"
+                    inline-collapsed={state.collapsed}
+                    theme="dark"
+                >
                     {(props.routerData || routerData).map(
                         (item: MenuItemType) => {
                             return state.isDown(item)
