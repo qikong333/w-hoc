@@ -12,6 +12,7 @@ import { InputType } from './types/inputType'
 import YwTableInput from '../YwTableInput/index'
 import { Form } from 'ant-design-vue'
 import YwUpload from '../YwUpload'
+import YwSelectImg from '../YwSelectImg'
 
 /**控制表单改变的总方法 */
 const changForm = (formItem: FormItem, form: any, emit: Function) => {
@@ -138,6 +139,11 @@ const inputElement = (formItem: FormItem, form: any, emit: Function) => {
 
         case InputType.Upload:
             el = <YwUpload />
+
+            break
+
+        case InputType.SelectImg:
+            el = <YwSelectImg />
 
             break
 

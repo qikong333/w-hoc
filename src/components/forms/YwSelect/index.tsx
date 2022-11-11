@@ -28,10 +28,10 @@ const YwSelect = defineComponent({
                     optionFilterProp="label"
                     placeholder={props.item?.placeholder}
                     v-model:value={Ctl._value}
-                    // options={props.item?.options}
+                    options={props.item?.options}
                     onChange={change}
                 >
-                    {props.item?.options &&
+                    {/* {props.item?.options &&
                         (props.item?.options).map(r => {
                             return (
                                 <SelectOption value={r.value}>
@@ -42,7 +42,7 @@ const YwSelect = defineComponent({
                                     />
                                 </SelectOption>
                             )
-                        })}
+                        })} */}
                 </Select>
             ),
         })

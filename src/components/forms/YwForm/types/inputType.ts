@@ -79,4 +79,6 @@ export enum InputType {
     TableInput,
     /** 上传图片 */
     Upload,
+    /**选择图片 */
+    SelectImg,
 }

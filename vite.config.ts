@@ -9,7 +9,6 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 // import themePreprocessorPlugin from '@zougt/vite-plugin-theme-preprocessor'
 import path from 'path'
 
-
 // https://vitejs.dev/config/
 
 export default ({ mode }) => {
@@ -30,22 +29,21 @@ export default ({ mode }) => {
             vue(),
             // themePreprocessorPlugin({
             //     less: {
-                    // 主题代码
-                    // multipleScopeVars: [
-                    //     {
-                    //         scopeName: 'theme-defalult',
-                    //         path: path.resolve('src/theme/default.less'),
-                    //     },
-                    //     {
-                    //         scopeName: 'theme-green',
-                    //         path: path.resolve('src/theme/green.less'),
-                    //     },
-                    // ],
+            // 主题代码
+            // multipleScopeVars: [
+            //     {
+            //         scopeName: 'theme-defalult',
+            //         path: path.resolve('src/theme/default.less'),
+            //     },
+            //     {
+            //         scopeName: 'theme-green',
+            //         path: path.resolve('src/theme/green.less'),
+            //     },
+            // ],
             //     },
             // }),
             WindiCSS(),
             vueJsx({}),
-          
 
             // 按需加载antd组件
             Components({
@@ -90,14 +88,17 @@ export default ({ mode }) => {
             },
         },
         //别名
-        alias: {
-            '~': resolve(__dirname, './'), // 根目录
-            '@': resolve(__dirname, 'src'),
+        resolve: {
+            alias: {
+                '@': path.resolve(__dirname, 'src'), //把 src 的别名设置为 @
+                '~': path.resolve(__dirname, './'), //把 src 的别名设置为 @
+            },
         },
         build: {
-            // 生产环境移除 console
+            minify: 'terser',
             terserOptions: {
                 compress: {
+                    //生产环境时移除console
                     drop_console: true,
                     drop_debugger: true,
                 },

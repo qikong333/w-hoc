@@ -1,7 +1,7 @@
 import { defineComponent, reactive, watchEffect, watch } from 'vue'
 import { Button, Upload } from 'ant-design-vue'
 import { FormItem } from '../types/formItem'
-
+import s from './index.module.scss'
 interface Props {
     value: string
     item: FormItem
@@ -19,7 +19,7 @@ const YwUpload = defineComponent({
             headers: {
                 authorization: 'authorization-text',
             },
-            fileList: '',
+            fileList: [],
             handleChange() {},
         })
 
@@ -27,16 +27,17 @@ const YwUpload = defineComponent({
         watchEffect(() => (Ctl._value = props.value ?? []))
         return () => (
             <>
-                11
-                {/* <Upload
+                <Upload
+                    name="avatar"
                     v-model:file-list={Ctl.fileList}
-                    name="file"
                     action={import.meta.env.VITE_APP_UPLOAD_URL}
                     headers={Ctl.headers}
+                    show-upload-list={false}
                     onChange={() => Ctl.handleChange()}
+                    class={s['avatar-uploader']}
                 >
-                    <Button>Click to Upload</Button>
-                </Upload> */}
+                    <div class={s['ant-upload-text']}>Upload</div>
+                </Upload>
             </>
         )
     },

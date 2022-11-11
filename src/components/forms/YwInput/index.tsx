@@ -1,5 +1,5 @@
 import { defineComponent, reactive, ref, watch, watchEffect } from 'vue'
-import { Input } from 'ant-design-vue'
+import { Image, Input } from 'ant-design-vue'
 import { FormItem } from '../types/formItem'
 
 interface Props {
@@ -21,15 +21,7 @@ const YwInput = defineComponent({
 
         // 固定使用Html
         const Html = reactive({
-            node: () => (
-                <Input
-                    disabled={props.item?.disabled}
-                    allowClear
-                    placeholder={props.item?.placeholder}
-                    v-model:value={Ctl._value}
-                    onChange={change}
-                />
-            ),
+            node: () => Image,
         })
 
         const change = (e: any) => {
